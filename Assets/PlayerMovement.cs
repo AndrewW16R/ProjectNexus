@@ -5,16 +5,20 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
    private Rigidbody2D rb;
+    private SpriteRenderer sprite;
+    private Animator anim;
 
     //left/right input
-    float dirX;
+    private float dirX = 0;
 
-    public float movementSpeed;
-    public float jumpStrength;
+    [SerializeField]private float movementSpeed = 6f;
+    [SerializeField]private float jumpStrength =14f;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -29,5 +33,28 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
         }
+
+        //Updates sprite animation
+        UpdateAnimationUpdate();
+       
     }
+
+    private void UpdateAnimationUpdate()
+    {
+        if (dirX > 0f)
+        {
+            anim.SetBool("running", true);
+            sprite.flipX = false;
+        }
+        else if (dirX < 0f)
+        {
+            anim.SetBool("running", true);
+            sprite.flipX = true;
+        }
+        else
+        {
+            anim.SetBool("running", false);
+        }
+    }
+
 }
