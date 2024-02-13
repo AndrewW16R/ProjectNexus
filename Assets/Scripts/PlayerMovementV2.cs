@@ -27,6 +27,7 @@ public class PlayerMovementV2 : MonoBehaviour
 
     [SerializeField] private float movementSpeed = 6f;
     [SerializeField] private float jumpStrength = 14f;
+    [SerializeField] private float doubleJumpStrength = 10f;
     private enum MovementState { idle, running, jumping, falling }
 
 
@@ -52,8 +53,16 @@ public class PlayerMovementV2 : MonoBehaviour
 
     private void Update()
     {
-        //Checks idf player is grounded
-        if(IsGrounded())
+        UpdateJump();
+
+        //Updates sprite animation
+        UpdateAnimationUpdate();
+    }
+
+    private void UpdateJump()
+    {
+        //Checks if player is grounded
+        if (IsGrounded())
         {
             rb.gravityScale = initialGravity;
             fastFalling = false;
@@ -67,13 +76,13 @@ public class PlayerMovementV2 : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
             jumpsAvailable = jumpsAvailable - 1;
             initialJumpUsed = true;
-            
+
         } //if player is already not grounded before the intial jump is used up, both the intial jump and the first addition jump are used up.
         else if (Input.GetButtonDown("Jump") && initialJumpUsed == false && jumpsAvailable > 0 && !IsGrounded())
         {
             rb.gravityScale = initialGravity;
             fastFalling = false;
-            rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
+            rb.velocity = new Vector2(rb.velocity.x, doubleJumpStrength);
             jumpsAvailable = jumpsAvailable - 2;
             initialJumpUsed = true;
         }
@@ -81,14 +90,11 @@ public class PlayerMovementV2 : MonoBehaviour
         {
             rb.gravityScale = initialGravity;
             fastFalling = false;
-            rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
+            rb.velocity = new Vector2(rb.velocity.x, doubleJumpStrength);
             jumpsAvailable = jumpsAvailable - 2;
 
         }
-        //Updates sprite animation
-        UpdateAnimationUpdate();
     }
-
 
     private void UpdateAnimationUpdate()
     {
