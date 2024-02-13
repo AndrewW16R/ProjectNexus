@@ -29,12 +29,16 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //Walking movement
          dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * movementSpeed, rb.velocity.y);
+       
+    }
 
+    private void Update()
+    {
         //jumping
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
@@ -43,8 +47,8 @@ public class PlayerMovement : MonoBehaviour
 
         //Updates sprite animation
         UpdateAnimationUpdate();
-       
     }
+
 
     private void UpdateAnimationUpdate()
     {
