@@ -9,6 +9,13 @@ public class PlayerMovementV2 : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator anim;
 
+    //How many jumps the player can do before needing to be grounded again
+    [SerializeField] private int jumpsAvailable = 2;
+    private int maxJumps;
+    // Has the player used their first jump
+    private bool initialJumpUsed = false;
+
+
     private float initialGravity;
     private bool fastFalling = false;
     [SerializeField] private float fastFallGravMultiplier = 1.5f;
@@ -31,6 +38,7 @@ public class PlayerMovementV2 : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         initialGravity = rb.gravityScale;
+        maxJumps = jumpsAvailable;
     }
 
     // Update is called once per frame
@@ -44,19 +52,39 @@ public class PlayerMovementV2 : MonoBehaviour
 
     private void Update()
     {
-
+        //Checks idf player is grounded
         if(IsGrounded())
         {
             rb.gravityScale = initialGravity;
             fastFalling = false;
+            jumpsAvailable = maxJumps;
+            initialJumpUsed = false;
         }
 
         //jumping
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
+            jumpsAvailable = jumpsAvailable - 1;
+            initialJumpUsed = true;
+            
+        } //if player is already not grounded before the intial jump is used up, both the intial jump and the first addition jump are used up.
+        else if (Input.GetButtonDown("Jump") && initialJumpUsed == false && jumpsAvailable > 0 && !IsGrounded())
+        {
+            rb.gravityScale = initialGravity;
+            fastFalling = false;
+            rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
+            jumpsAvailable = jumpsAvailable - 2;
+            initialJumpUsed = true;
         }
+        else if (Input.GetButtonDown("Jump") && jumpsAvailable > 0 && !IsGrounded())
+        {
+            rb.gravityScale = initialGravity;
+            fastFalling = false;
+            rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
+            jumpsAvailable = jumpsAvailable - 2;
 
+        }
         //Updates sprite animation
         UpdateAnimationUpdate();
     }
