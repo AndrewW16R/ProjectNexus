@@ -15,15 +15,22 @@ public class PlayerMovementV2 : MonoBehaviour
     // Has the player used their first jump
     private bool initialJumpUsed = false;
 
-
     private float initialGravity;
     private bool fastFalling = false;
     [SerializeField] private float fastFallGravMultiplier = 1.5f;
 
     [SerializeField] private LayerMask jumpableGround;
 
+    private bool isDashing = false;
+    [SerializeField] private int dashesAvailable;
+    private int maxDashes;
+    [SerializeField] private float dashDuration;
+    [SerializeField] private float dashSpeed;
+
+
     //left/right input
     private float dirX = 0;
+
 
     [SerializeField] private float movementSpeed = 6f;
     [SerializeField] private float jumpStrength = 14f;
@@ -48,6 +55,15 @@ public class PlayerMovementV2 : MonoBehaviour
         //Walking movement
         dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * movementSpeed, rb.velocity.y);
+
+        /*
+        if (Input.GetButtonDown("Fire3") && isDashing == false)
+        {
+            StartCoroutine(StartDash(Vector2.right));
+        }
+        */
+
+
 
     }
 
@@ -138,4 +154,27 @@ public class PlayerMovementV2 : MonoBehaviour
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
+
+    /*
+    private IEnumerator StartDash(Vector2 dir)
+    {
+        float dashStartTime = Time.time;
+
+        dashesAvailable = dashesAvailable - 1;
+        //isDashing = true;
+
+
+        rb.gravityScale = 0;
+
+        while (Time.time - dashStartTime <= dashDuration)
+        {
+            rb.velocity = new Vector2(dashSpeed, 0);
+
+            yield return null;
+        }
+
+        rb.velocity = new Vector2(movementSpeed, rb.velocity.y);
+
+    }
+    */
 }

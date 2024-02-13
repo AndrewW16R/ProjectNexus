@@ -1122,6 +1122,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6263452066068680928, guid: 310b23752bc7cf345aa34b3175e49774, type: 3}
+      propertyPath: dashSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263452066068680928, guid: 310b23752bc7cf345aa34b3175e49774, type: 3}
+      propertyPath: dashDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263452066068680928, guid: 310b23752bc7cf345aa34b3175e49774, type: 3}
+      propertyPath: dashesAvailable
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263452066068680928, guid: 310b23752bc7cf345aa34b3175e49774, type: 3}
       propertyPath: fastFallGravMultiplier
       value: 1.5
       objectReference: {fileID: 0}
