@@ -5121,7 +5121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6263452066068680928, guid: 310b23752bc7cf345aa34b3175e49774, type: 3}
       propertyPath: dashesAvailable
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6263452066068680928, guid: 310b23752bc7cf345aa34b3175e49774, type: 3}
       propertyPath: doubleJumpStrength

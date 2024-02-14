@@ -24,8 +24,10 @@ public class PlayerMovementV2 : MonoBehaviour
     private bool isDashing = false;
     [SerializeField] private int dashesAvailable;
     private int maxDashes;
+    private bool dashRefilling = false;
     [SerializeField] private float dashDuration;
     [SerializeField] private float dashSpeed;
+    [SerializeField] private int timeToRefillOneDash = 1;
 
 
     //left/right input
@@ -53,6 +55,8 @@ public class PlayerMovementV2 : MonoBehaviour
         anim = GetComponent<Animator>();
         initialGravity = rb.gravityScale;
         maxJumps = jumpsAvailable;
+        maxDashes = dashesAvailable;
+
     }
 
     // Update is called once per frame
@@ -85,7 +89,12 @@ public class PlayerMovementV2 : MonoBehaviour
         }
 
 
-        if (Input.GetButtonDown("Fire3") && isDashing == false)
+        if (dashesAvailable < maxDashes && dashRefilling == false)
+        {
+            StartCoroutine(RefillDash(timeToRefillOneDash));
+        }
+
+        if (Input.GetButtonDown("Fire3") && isDashing == false && dashesAvailable > 0)
         {
             
 
@@ -234,5 +243,14 @@ public class PlayerMovementV2 : MonoBehaviour
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         rb.gravityScale = initialGravity;
+        dashesAvailable = dashesAvailable - 1;
+    }
+
+    private IEnumerator RefillDash(int amount)
+    {
+        dashRefilling = true;
+        yield return new WaitForSeconds(timeToRefillOneDash);
+        dashRefilling = false;
+        dashesAvailable = dashesAvailable + 1;
     }
 }
