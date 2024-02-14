@@ -26,6 +26,8 @@ public class PlayerMovementV2 : MonoBehaviour
     private int maxDashes;
     [SerializeField] private float dashDuration;
     [SerializeField] private float dashSpeed;
+    [SerializeField] private float dashEndSpeed;
+    [SerializeField] private float dashEndTime;
 
 
     //left/right input
@@ -35,6 +37,12 @@ public class PlayerMovementV2 : MonoBehaviour
     [SerializeField] private float movementSpeed = 6f;
     [SerializeField] private float jumpStrength = 14f;
     [SerializeField] private float doubleJumpStrength = 10f;
+
+    //The direction tha player is facing. -1 = facing left  1 = facing right
+    private float facingDirection;
+
+    //The direction the player is holding -1 = facing left  1 = facing right
+    private float heldDirection;
     private enum MovementState { idle, running, jumping, falling }
 
 
@@ -54,14 +62,36 @@ public class PlayerMovementV2 : MonoBehaviour
     {
         //Walking movement
         dirX = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(dirX * movementSpeed, rb.velocity.y);
+        if (isDashing == false)
+        {
+            rb.velocity = new Vector2(dirX * movementSpeed, rb.velocity.y);
 
-        /*
+            if (dirX > 0 && IsGrounded())
+            {
+                facingDirection = 1;
+            }
+            else if (dirX < 0 && IsGrounded())
+            {
+                facingDirection = -1;
+            }
+
+        }
+        
+
+        
         if (Input.GetButtonDown("Fire3") && isDashing == false)
         {
-            StartCoroutine(StartDash(Vector2.right));
+            if (dirX > 0)
+            {
+                heldDirection = 1;
+            }
+            else if (dirX < 0)
+            {
+                heldDirection = -1;
+            }
+            StartCoroutine(Dash(heldDirection));
         }
-        */
+        
 
 
 
@@ -107,7 +137,7 @@ public class PlayerMovementV2 : MonoBehaviour
             rb.gravityScale = initialGravity;
             fastFalling = false;
             rb.velocity = new Vector2(rb.velocity.x, doubleJumpStrength);
-            jumpsAvailable = jumpsAvailable - 2;
+            jumpsAvailable = jumpsAvailable - 1;
 
         }
     }
@@ -117,12 +147,12 @@ public class PlayerMovementV2 : MonoBehaviour
         //Local variable to hold the animation state
         MovementState state;
 
-        if (dirX > 0f)
+        if (dirX > 0f && isDashing == false)
         {
             state = MovementState.running;
             sprite.flipX = false;
         }
-        else if (dirX < 0f)
+        else if (dirX < 0f && isDashing == false)
         {
             state = MovementState.running;
             sprite.flipX = true;
@@ -155,26 +185,52 @@ public class PlayerMovementV2 : MonoBehaviour
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 
+
     /*
     private IEnumerator StartDash(Vector2 dir)
     {
         float dashStartTime = Time.time;
 
         dashesAvailable = dashesAvailable - 1;
-        //isDashing = true;
+        isDashing = true;
 
 
         rb.gravityScale = 0;
 
         while (Time.time - dashStartTime <= dashDuration)
         {
-            rb.velocity = new Vector2(dashSpeed, 0);
+            // rb.velocity = dir.normalized * dashSpeed;
+            rb.AddForce(new Vector2(dashSpeed * 1, 0f), ForceMode2D.Impulse);
 
             yield return null;
         }
 
-        rb.velocity = new Vector2(movementSpeed, rb.velocity.y);
+        dashStartTime = Time.time;
+
+        isDashing = false;
+
+        rb.gravityScale = initialGravity;
+
+        rb.velocity = movementSpeed * dir.normalized;
+
+        while (Time.time - dashStartTime <= dashEndTime )
+        {
+            yield return null;
+        }
+
+        isDashing = false;
 
     }
     */
+
+    private IEnumerator Dash(float direction)
+    {
+        isDashing = true;
+        rb.velocity = new Vector2(rb.velocity.x, 0f);
+        rb.AddForce(new Vector2(dashSpeed * direction, 0f), ForceMode2D.Impulse);
+        rb.gravityScale = 0;
+        yield return new WaitForSeconds(dashDuration);
+        isDashing = false;
+        rb.gravityScale = initialGravity;
+    }
 }

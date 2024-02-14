@@ -1123,15 +1123,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6263452066068680928, guid: 310b23752bc7cf345aa34b3175e49774, type: 3}
       propertyPath: dashSpeed
-      value: 100
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263452066068680928, guid: 310b23752bc7cf345aa34b3175e49774, type: 3}
+      propertyPath: dashEndTime
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6263452066068680928, guid: 310b23752bc7cf345aa34b3175e49774, type: 3}
       propertyPath: dashDuration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263452066068680928, guid: 310b23752bc7cf345aa34b3175e49774, type: 3}
+      propertyPath: dashEndSpeed
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6263452066068680928, guid: 310b23752bc7cf345aa34b3175e49774, type: 3}
       propertyPath: dashesAvailable
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263452066068680928, guid: 310b23752bc7cf345aa34b3175e49774, type: 3}
+      propertyPath: doubleJumpStrength
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6263452066068680928, guid: 310b23752bc7cf345aa34b3175e49774, type: 3}
       propertyPath: fastFallGravMultiplier
