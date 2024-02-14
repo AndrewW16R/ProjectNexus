@@ -26,8 +26,6 @@ public class PlayerMovementV2 : MonoBehaviour
     private int maxDashes;
     [SerializeField] private float dashDuration;
     [SerializeField] private float dashSpeed;
-    [SerializeField] private float dashEndSpeed;
-    [SerializeField] private float dashEndTime;
 
 
     //left/right input
@@ -219,48 +217,19 @@ public class PlayerMovementV2 : MonoBehaviour
     }
 
 
-    /*
-    private IEnumerator StartDash(Vector2 dir)
-    {
-        float dashStartTime = Time.time;
-
-        dashesAvailable = dashesAvailable - 1;
-        isDashing = true;
-
-
-        rb.gravityScale = 0;
-
-        while (Time.time - dashStartTime <= dashDuration)
-        {
-            // rb.velocity = dir.normalized * dashSpeed;
-            rb.AddForce(new Vector2(dashSpeed * 1, 0f), ForceMode2D.Impulse);
-
-            yield return null;
-        }
-
-        dashStartTime = Time.time;
-
-        isDashing = false;
-
-        rb.gravityScale = initialGravity;
-
-        rb.velocity = movementSpeed * dir.normalized;
-
-        while (Time.time - dashStartTime <= dashEndTime )
-        {
-            yield return null;
-        }
-
-        isDashing = false;
-
-    }
-    */
 
     private IEnumerator Dash(float direction)
     {
         isDashing = true;
         rb.velocity = new Vector2(rb.velocity.x, 0f);
-        rb.AddForce(new Vector2(dashSpeed * direction, 0f), ForceMode2D.Impulse);
+        //rb.AddForce(new Vector2(dashSpeed * direction, 0f), ForceMode2D.Impulse);
+       //below if statement added since above Added dash speed to move speed. It felt pretty good though
+        
+        if (rb.velocity.x != dashSpeed * direction)
+        {
+            rb.velocity = new Vector2(dashSpeed * direction, 0f);
+        }
+        
         rb.gravityScale = 0;
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
