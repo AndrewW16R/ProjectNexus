@@ -39,10 +39,10 @@ public class PlayerMovementV2 : MonoBehaviour
     [SerializeField] private float doubleJumpStrength = 10f;
 
     //The direction tha player is facing. -1 = facing left  1 = facing right
-    private float facingDirection;
+    [SerializeField] private float facingDirection = 1;
 
     //The direction the player is holding -1 = facing left  1 = facing right
-    private float heldDirection;
+    [SerializeField] private float heldDirection;
     private enum MovementState { idle, running, jumping, falling }
 
 
@@ -76,20 +76,30 @@ public class PlayerMovementV2 : MonoBehaviour
             }
 
         }
-        
 
-        
+        if (dirX > 0)
+        {
+            heldDirection = 1;
+        }
+        else if (dirX < 0)
+        {
+            heldDirection = -1;
+        }
+
+
         if (Input.GetButtonDown("Fire3") && isDashing == false)
         {
-            if (dirX > 0)
+            
+
+            if (heldDirection != facingDirection && IsGrounded())
             {
-                heldDirection = 1;
+                StartCoroutine(Dash(facingDirection));
             }
-            else if (dirX < 0)
+            else
             {
-                heldDirection = -1;
+                StartCoroutine(Dash(heldDirection));
             }
-            StartCoroutine(Dash(heldDirection));
+            
         }
         
 
@@ -157,18 +167,41 @@ public class PlayerMovementV2 : MonoBehaviour
             state = MovementState.running;
             sprite.flipX = true;
         }
+        else if  (facingDirection == -1)
+        {
+            state = MovementState.idle;
+            sprite.flipX = true;
+        }
         else
         {
             state = MovementState.idle;
+            sprite.flipX = false;
         }
 
-        if (rb.velocity.y > .1f)
+        if (rb.velocity.y > .1f && facingDirection == 1)
         {
             state = MovementState.jumping;
+            sprite.flipX = false;
         }
-        else if (rb.velocity.y < -.1f)
+        else if(rb.velocity.y > .1f && facingDirection == -1)
+        {
+            state = MovementState.jumping;
+            sprite.flipX = true;
+        }
+        else if (rb.velocity.y < -.1f && facingDirection == 1)
         {
             state = MovementState.falling;
+            sprite.flipX = false;
+            if (fastFalling == false)
+            {
+                rb.gravityScale = rb.gravityScale * fastFallGravMultiplier;
+                fastFalling = true;
+            }
+        }
+        else if (rb.velocity.y < -.1f && facingDirection == -1)
+        {
+            state = MovementState.falling;
+            sprite.flipX = true;
             if (fastFalling == false)
             {
                 rb.gravityScale = rb.gravityScale * fastFallGravMultiplier;
@@ -176,8 +209,8 @@ public class PlayerMovementV2 : MonoBehaviour
             }
         }
 
-        //Sets value for state parameter
-        anim.SetInteger("state", (int)state);
+            //Sets value for state parameter
+            anim.SetInteger("state", (int)state);
     }
 
     private bool IsGrounded()
