@@ -43,7 +43,7 @@ public class PlayerMovementV2 : MonoBehaviour
 
     //The direction the player is holding -1 = facing left  1 = facing right
     [SerializeField] private float heldDirection;
-    private enum MovementState { idle, running, jumping, falling }
+    private enum MovementState { idle, walking, running, jumping, doubleJump, falling, dashGrounded, dashAirForward, dashAirBackward }
 
 
     // Start is called before the first frame update
@@ -230,20 +230,24 @@ public class PlayerMovementV2 : MonoBehaviour
     private IEnumerator Dash(float direction)
     {
         isDashing = true;
+        //Debug.Log("dash detected");
         rb.velocity = new Vector2(rb.velocity.x, 0f);
-        //rb.AddForce(new Vector2(dashSpeed * direction, 0f), ForceMode2D.Impulse);
-       //below if statement added since above Added dash speed to move speed. It felt pretty good though
-        
+        rb.AddForce(new Vector2(dashSpeed * direction, 0f), ForceMode2D.Impulse);
+       //below if statement implemented since above Added dash speed to move speed. It felt pretty good though
+       
+        /*
         if (rb.velocity.x != dashSpeed * direction)
         {
             rb.velocity = new Vector2(dashSpeed * direction, 0f);
         }
+        */
         
         rb.gravityScale = 0;
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         rb.gravityScale = initialGravity;
         dashesAvailable = dashesAvailable - 1;
+        
     }
 
     private IEnumerator RefillDash(int amount)
