@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6309ff97f819e134c9a975b42ce73600
+guid: 10f2518e6bf746042b17bfb789a1ae5d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -61,7 +61,7 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  ignorePngGamma: 0
+  ignorePngGamma: 1
   applyGammaDecoding: 0
   cookieLightType: 0
   platformSettings:
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Jump_0
+      name: NexusAnim_SpriteSheet_DoubleJump_0
       rect:
         serializedVersion: 2
         x: 0
@@ -113,20 +113,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e690044a8ee91ac4db4038b13b29431e
-      internalID: 1011156268
+      spriteID: c1af41e5a4f602a4abd502255eff8c1f
+      internalID: 1120057505
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Jump_1
+      name: NexusAnim_SpriteSheet_DoubleJump_1
       rect:
         serializedVersion: 2
         x: 64
@@ -134,20 +134,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ffea3da924a8954cac6c47be786976f
-      internalID: 729208747
+      spriteID: e02aea07e0cfa354fbafd2877bb94347
+      internalID: -1120483444
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Jump_2
+      name: NexusAnim_SpriteSheet_DoubleJump_2
       rect:
         serializedVersion: 2
         x: 128
@@ -155,20 +155,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5c2b01f0e1e4ce4a84b4ea196c76c39
-      internalID: 138576784
+      spriteID: 8423af86fd30eff40b3bbf209e9c26cd
+      internalID: -1051711082
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Jump_3
+      name: NexusAnim_SpriteSheet_DoubleJump_3
       rect:
         serializedVersion: 2
         x: 192
@@ -176,20 +176,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e9f21a7f38dc0d4387ad2513b07a4f9
-      internalID: -1207557617
+      spriteID: b0ad15460eb49534cb74278ad962bd9b
+      internalID: -819351666
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Jump_4
+      name: NexusAnim_SpriteSheet_DoubleJump_4
       rect:
         serializedVersion: 2
         x: 256
@@ -197,14 +197,56 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b829380831393fd41b01ed59afed9436
-      internalID: 968933827
+      spriteID: fb1c50f3650c1e249aa5c653e2eadb78
+      internalID: -32171706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NexusAnim_SpriteSheet_DoubleJump_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13b43b362f802b94da135b04b36f137e
+      internalID: -1611819219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NexusAnim_SpriteSheet_DoubleJump_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e78aa1b542fc0f64ab926f664cd50aca
+      internalID: -1613353052
       vertices: []
       indices: 
       edges: []
@@ -220,11 +262,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NexusAnim_SpriteSheet_Jump_0: 1011156268
-      NexusAnim_SpriteSheet_Jump_1: 729208747
-      NexusAnim_SpriteSheet_Jump_2: 138576784
-      NexusAnim_SpriteSheet_Jump_3: -1207557617
-      NexusAnim_SpriteSheet_Jump_4: 968933827
+      NexusAnim_SpriteSheet_DoubleJump_0: 1120057505
+      NexusAnim_SpriteSheet_DoubleJump_1: -1120483444
+      NexusAnim_SpriteSheet_DoubleJump_2: -1051711082
+      NexusAnim_SpriteSheet_DoubleJump_3: -819351666
+      NexusAnim_SpriteSheet_DoubleJump_4: -32171706
+      NexusAnim_SpriteSheet_DoubleJump_5: -1611819219
+      NexusAnim_SpriteSheet_DoubleJump_6: -1613353052
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

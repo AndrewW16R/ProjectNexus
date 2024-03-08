@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d1a54fb6be446fb48aaad3e49fadb00c
+guid: 134d2bbb4394bc14eaa127088d4098c7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 2
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_0
+      name: NexusAnim_SpriteSheet_Walking_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a190a7ce0062727418d2439d783c342d
-      internalID: 1531020200
+      spriteID: ffa26edce696745409c7725f969a49be
+      internalID: 2033182652
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_1
+      name: NexusAnim_SpriteSheet_Walking_1
       rect:
         serializedVersion: 2
         x: 64
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f6357ed742dd8a49a1baafb49772d1c
-      internalID: 1124462978
+      spriteID: 97e76856b77041f449e6a6e4bbb27596
+      internalID: -2075630063
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_2
+      name: NexusAnim_SpriteSheet_Walking_2
       rect:
         serializedVersion: 2
         x: 128
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bad594748e92a314c9cbd88ba13df5b3
-      internalID: -1987883327
+      spriteID: ea4364443b211ed4db4edb14e79ba8c5
+      internalID: 945635090
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_3
+      name: NexusAnim_SpriteSheet_Walking_3
       rect:
         serializedVersion: 2
         x: 192
@@ -182,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 133db3a75d24a4c4692c86f1b56e0600
-      internalID: 1967646557
+      spriteID: 078cb9cc17dd1b246a2cabf3d92808f4
+      internalID: -1054962702
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_4
+      name: NexusAnim_SpriteSheet_Walking_4
       rect:
         serializedVersion: 2
         x: 256
@@ -203,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5444be508884a4d4888d15e4d9e282a7
-      internalID: -891867708
+      spriteID: 07ee8e9b6e85be3479161c4fe7325b69
+      internalID: 2052807627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_5
+      name: NexusAnim_SpriteSheet_Walking_5
       rect:
         serializedVersion: 2
         x: 320
@@ -224,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 607cafbaa4e41964a8ab727d61402ad6
-      internalID: 1921537200
+      spriteID: ec5d2f951fe568b4da138f75b88d5f8b
+      internalID: -1295080459
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_6
+      name: NexusAnim_SpriteSheet_Walking_6
       rect:
         serializedVersion: 2
         x: 384
@@ -245,14 +245,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de93b5432ad01e147a592ca806d4c81d
-      internalID: 1525054216
+      spriteID: 0f4bae5cafcc5724b995ddcca4aa16d7
+      internalID: 1979289295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_7
+      name: NexusAnim_SpriteSheet_Walking_7
       rect:
         serializedVersion: 2
         x: 448
@@ -266,14 +266,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 640cd0220b598714daeb2020a43ad022
-      internalID: -554715707
+      spriteID: 6cfb8d0836f566f47a48a383f2ec3831
+      internalID: -850476551
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_8
+      name: NexusAnim_SpriteSheet_Walking_8
       rect:
         serializedVersion: 2
         x: 512
@@ -287,14 +287,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: daa49cdbe3bc29f44a2f7f2e9ff4bd97
-      internalID: 911972378
+      spriteID: 185a60a3b180b7147af71ab5c18a8d54
+      internalID: 1719248633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_9
+      name: NexusAnim_SpriteSheet_Walking_9
       rect:
         serializedVersion: 2
         x: 576
@@ -308,14 +308,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e24c1820194aa4b43ade6d21a2459060
-      internalID: 1066151154
+      spriteID: 66ee7441ca3507d4d8f353df50c5d460
+      internalID: -958071122
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_10
+      name: NexusAnim_SpriteSheet_Walking_10
       rect:
         serializedVersion: 2
         x: 640
@@ -329,14 +329,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1b33261c215cbb4a964d929214a3364
-      internalID: -1157315638
+      spriteID: 01c222065a4bcc147add86a58e0fb6c5
+      internalID: -2113502410
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_11
+      name: NexusAnim_SpriteSheet_Walking_11
       rect:
         serializedVersion: 2
         x: 704
@@ -350,14 +350,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5caf6fe8c0c802408647b68768f5611
-      internalID: 1808694499
+      spriteID: 07e2ed475073633458a05f733b3cdc5f
+      internalID: -16036585
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_12
+      name: NexusAnim_SpriteSheet_Walking_12
       rect:
         serializedVersion: 2
         x: 768
@@ -371,14 +371,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4c371c54088fdc41a64f1502a7e35e7
-      internalID: -688214873
+      spriteID: 84fa9d6424fcaf540affb76fbdd654cb
+      internalID: -1755299967
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_13
+      name: NexusAnim_SpriteSheet_Walking_13
       rect:
         serializedVersion: 2
         x: 832
@@ -392,14 +392,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4b594e05218c394da6ff000ac20d007
-      internalID: -706464851
+      spriteID: c4a48be5c85ad0a40acd8307a3213ca1
+      internalID: 339742922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_14
+      name: NexusAnim_SpriteSheet_Walking_14
       rect:
         serializedVersion: 2
         x: 896
@@ -413,14 +413,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40e0e4697b31e0c45992c8d4bd879cf1
-      internalID: -309487663
+      spriteID: ccf1f110ddbc1ee47b2ab7691c783c36
+      internalID: 2070536627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_15
+      name: NexusAnim_SpriteSheet_Walking_15
       rect:
         serializedVersion: 2
         x: 960
@@ -434,14 +434,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ac35fe3b221339459aacb1a187789dc
-      internalID: -1257589591
+      spriteID: 19547e9b9e00a5149a98e5cfbb660c90
+      internalID: 1046634130
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_16
+      name: NexusAnim_SpriteSheet_Walking_16
       rect:
         serializedVersion: 2
         x: 1024
@@ -455,14 +455,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69141e10231d2f24a8bf0aebd26d8b9c
-      internalID: -1686658413
+      spriteID: 3c1df57c81958324b9df6967d65b2fe3
+      internalID: -1378751195
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_17
+      name: NexusAnim_SpriteSheet_Walking_17
       rect:
         serializedVersion: 2
         x: 1088
@@ -476,14 +476,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5a217d970381754cb0420996ae8e935
-      internalID: -319841765
+      spriteID: a41e0b5edf9e7ed4d9e8ba630c2fd993
+      internalID: -1571268970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_18
+      name: NexusAnim_SpriteSheet_Walking_18
       rect:
         serializedVersion: 2
         x: 1152
@@ -497,14 +497,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 318d3dac742a1594b9fdff6a0201fcdd
-      internalID: -274874801
+      spriteID: 3b0a3fe72df28ac45a9f201fc9d1c267
+      internalID: -790073400
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_19
+      name: NexusAnim_SpriteSheet_Walking_19
       rect:
         serializedVersion: 2
         x: 1216
@@ -518,14 +518,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32ff654b7622f27479749dc59ff58c3e
-      internalID: 1578495922
+      spriteID: a534c317db006dc49910e16124ea858d
+      internalID: -1487431056
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_20
+      name: NexusAnim_SpriteSheet_Walking_20
       rect:
         serializedVersion: 2
         x: 1280
@@ -539,14 +539,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3bb63f97c3ab1f64488742aff36032ca
-      internalID: 1357345296
+      spriteID: a31c05e61f9e78848865a3c0b9bbcdbe
+      internalID: 177004152
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_21
+      name: NexusAnim_SpriteSheet_Walking_21
       rect:
         serializedVersion: 2
         x: 1344
@@ -560,14 +560,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 223d2968f4fdd6643ad58dc5064257d2
-      internalID: -1586725558
+      spriteID: e6fc3c129ad6f6a47a6228f8c887996d
+      internalID: 1287422600
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_22
+      name: NexusAnim_SpriteSheet_Walking_22
       rect:
         serializedVersion: 2
         x: 1408
@@ -581,14 +581,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 185e3681a8d5af1408f407cb22b367aa
-      internalID: 221970109
+      spriteID: f6417fad04e27ef45ae788d2c8ae9f80
+      internalID: -1824339146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_23
+      name: NexusAnim_SpriteSheet_Walking_23
       rect:
         serializedVersion: 2
         x: 1472
@@ -602,14 +602,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6be52a929efe1b846b02884f30654fd1
-      internalID: 943919290
+      spriteID: 7bdf86697e7203f43ac2bc6de8bd48ce
+      internalID: -331826659
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_24
+      name: NexusAnim_SpriteSheet_Walking_24
       rect:
         serializedVersion: 2
         x: 1536
@@ -623,14 +623,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf9ecb0a065675b4ca188b5bf1b64b22
-      internalID: -1278423700
+      spriteID: 7c5d8ca59fc9e654a89773313fb423af
+      internalID: 1339508035
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_25
+      name: NexusAnim_SpriteSheet_Walking_25
       rect:
         serializedVersion: 2
         x: 1600
@@ -644,14 +644,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26ced0107fe56014ca2abedb03e83af7
-      internalID: -973951119
+      spriteID: 0afb9424c13bcec4e818eba2802a8aa1
+      internalID: 203878290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Run_26
+      name: NexusAnim_SpriteSheet_Walking_26
       rect:
         serializedVersion: 2
         x: 1664
@@ -665,8 +665,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b49e919a827a94a47be216efc85de5a9
-      internalID: -967171056
+      spriteID: e1d0dce84fc766e47adc14e1f5707c2a
+      internalID: 690820182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NexusAnim_SpriteSheet_Walking_27
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b796d300e07027943ba4d2c9b3c28650
+      internalID: -2089072819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NexusAnim_SpriteSheet_Walking_28
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e417a67e7c9b12d48b88853a87a5d80f
+      internalID: 842257529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NexusAnim_SpriteSheet_Walking_29
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81fcb44e83a1eec4ca8673ebdee25c9e
+      internalID: -371807663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NexusAnim_SpriteSheet_Walking_30
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2951b10a378839f40973807a03dc002c
+      internalID: -2090639135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NexusAnim_SpriteSheet_Walking_31
+      rect:
+        serializedVersion: 2
+        x: 1984
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5711cc14f574df64eb47824f9c854979
+      internalID: -1058358527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NexusAnim_SpriteSheet_Walking_32
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0882127e2621f2b4bbbee206e047117a
+      internalID: 909831235
       vertices: []
       indices: 
       edges: []
@@ -682,33 +808,39 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NexusAnim_SpriteSheet_Run_0: 1531020200
-      NexusAnim_SpriteSheet_Run_1: 1124462978
-      NexusAnim_SpriteSheet_Run_10: -1157315638
-      NexusAnim_SpriteSheet_Run_11: 1808694499
-      NexusAnim_SpriteSheet_Run_12: -688214873
-      NexusAnim_SpriteSheet_Run_13: -706464851
-      NexusAnim_SpriteSheet_Run_14: -309487663
-      NexusAnim_SpriteSheet_Run_15: -1257589591
-      NexusAnim_SpriteSheet_Run_16: -1686658413
-      NexusAnim_SpriteSheet_Run_17: -319841765
-      NexusAnim_SpriteSheet_Run_18: -274874801
-      NexusAnim_SpriteSheet_Run_19: 1578495922
-      NexusAnim_SpriteSheet_Run_2: -1987883327
-      NexusAnim_SpriteSheet_Run_20: 1357345296
-      NexusAnim_SpriteSheet_Run_21: -1586725558
-      NexusAnim_SpriteSheet_Run_22: 221970109
-      NexusAnim_SpriteSheet_Run_23: 943919290
-      NexusAnim_SpriteSheet_Run_24: -1278423700
-      NexusAnim_SpriteSheet_Run_25: -973951119
-      NexusAnim_SpriteSheet_Run_26: -967171056
-      NexusAnim_SpriteSheet_Run_3: 1967646557
-      NexusAnim_SpriteSheet_Run_4: -891867708
-      NexusAnim_SpriteSheet_Run_5: 1921537200
-      NexusAnim_SpriteSheet_Run_6: 1525054216
-      NexusAnim_SpriteSheet_Run_7: -554715707
-      NexusAnim_SpriteSheet_Run_8: 911972378
-      NexusAnim_SpriteSheet_Run_9: 1066151154
+      NexusAnim_SpriteSheet_Walking_0: 2033182652
+      NexusAnim_SpriteSheet_Walking_1: -2075630063
+      NexusAnim_SpriteSheet_Walking_10: -2113502410
+      NexusAnim_SpriteSheet_Walking_11: -16036585
+      NexusAnim_SpriteSheet_Walking_12: -1755299967
+      NexusAnim_SpriteSheet_Walking_13: 339742922
+      NexusAnim_SpriteSheet_Walking_14: 2070536627
+      NexusAnim_SpriteSheet_Walking_15: 1046634130
+      NexusAnim_SpriteSheet_Walking_16: -1378751195
+      NexusAnim_SpriteSheet_Walking_17: -1571268970
+      NexusAnim_SpriteSheet_Walking_18: -790073400
+      NexusAnim_SpriteSheet_Walking_19: -1487431056
+      NexusAnim_SpriteSheet_Walking_2: 945635090
+      NexusAnim_SpriteSheet_Walking_20: 177004152
+      NexusAnim_SpriteSheet_Walking_21: 1287422600
+      NexusAnim_SpriteSheet_Walking_22: -1824339146
+      NexusAnim_SpriteSheet_Walking_23: -331826659
+      NexusAnim_SpriteSheet_Walking_24: 1339508035
+      NexusAnim_SpriteSheet_Walking_25: 203878290
+      NexusAnim_SpriteSheet_Walking_26: 690820182
+      NexusAnim_SpriteSheet_Walking_27: -2089072819
+      NexusAnim_SpriteSheet_Walking_28: 842257529
+      NexusAnim_SpriteSheet_Walking_29: -371807663
+      NexusAnim_SpriteSheet_Walking_3: -1054962702
+      NexusAnim_SpriteSheet_Walking_30: -2090639135
+      NexusAnim_SpriteSheet_Walking_31: -1058358527
+      NexusAnim_SpriteSheet_Walking_32: 909831235
+      NexusAnim_SpriteSheet_Walking_4: 2052807627
+      NexusAnim_SpriteSheet_Walking_5: -1295080459
+      NexusAnim_SpriteSheet_Walking_6: 1979289295
+      NexusAnim_SpriteSheet_Walking_7: -850476551
+      NexusAnim_SpriteSheet_Walking_8: 1719248633
+      NexusAnim_SpriteSheet_Walking_9: -958071122
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6309ff97f819e134c9a975b42ce73600
+guid: f78ced1b457a3f748bf641e32b947790
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Jump_0
+      name: NexusAnim_SpriteSheet_Attack_L_neutral_ground_0
       rect:
         serializedVersion: 2
         x: 0
@@ -113,20 +113,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e690044a8ee91ac4db4038b13b29431e
-      internalID: 1011156268
+      spriteID: 49f2114a42ccfd448a55f1cc74d380b7
+      internalID: 140200623
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Jump_1
+      name: NexusAnim_SpriteSheet_Attack_L_neutral_ground_1
       rect:
         serializedVersion: 2
         x: 64
@@ -134,20 +134,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ffea3da924a8954cac6c47be786976f
-      internalID: 729208747
+      spriteID: a62cc50041f1b994b9ce272e708c5dbf
+      internalID: -1849862234
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Jump_2
+      name: NexusAnim_SpriteSheet_Attack_L_neutral_ground_2
       rect:
         serializedVersion: 2
         x: 128
@@ -155,20 +155,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5c2b01f0e1e4ce4a84b4ea196c76c39
-      internalID: 138576784
+      spriteID: 3cc251c4faa15f640a40e8e9e27029fe
+      internalID: -1853076538
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Jump_3
+      name: NexusAnim_SpriteSheet_Attack_L_neutral_ground_3
       rect:
         serializedVersion: 2
         x: 192
@@ -176,20 +176,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e9f21a7f38dc0d4387ad2513b07a4f9
-      internalID: -1207557617
+      spriteID: 6a63a32b9420036468d29264f83681c2
+      internalID: -1742355498
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NexusAnim_SpriteSheet_Jump_4
+      name: NexusAnim_SpriteSheet_Attack_L_neutral_ground_4
       rect:
         serializedVersion: 2
         x: 256
@@ -197,14 +197,77 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b829380831393fd41b01ed59afed9436
-      internalID: 968933827
+      spriteID: ecd23e0dff6181d43b2272f3dc3fb1dd
+      internalID: 1749465283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NexusAnim_SpriteSheet_Attack_L_neutral_ground_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6acd8cfbb688d004bbfea7d409c45d8b
+      internalID: 1150473378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NexusAnim_SpriteSheet_Attack_L_neutral_ground_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d93f24bbfcef52040bfd6c3065bef7b0
+      internalID: 1576247904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NexusAnim_SpriteSheet_Attack_L_neutral_ground_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d4207e951a67e24d8768d16e6c5ac80
+      internalID: 715824692
       vertices: []
       indices: 
       edges: []
@@ -220,11 +283,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NexusAnim_SpriteSheet_Jump_0: 1011156268
-      NexusAnim_SpriteSheet_Jump_1: 729208747
-      NexusAnim_SpriteSheet_Jump_2: 138576784
-      NexusAnim_SpriteSheet_Jump_3: -1207557617
-      NexusAnim_SpriteSheet_Jump_4: 968933827
+      NexusAnim_SpriteSheet_Attack_L_neutral_ground_0: 140200623
+      NexusAnim_SpriteSheet_Attack_L_neutral_ground_1: -1849862234
+      NexusAnim_SpriteSheet_Attack_L_neutral_ground_2: -1853076538
+      NexusAnim_SpriteSheet_Attack_L_neutral_ground_3: -1742355498
+      NexusAnim_SpriteSheet_Attack_L_neutral_ground_4: 1749465283
+      NexusAnim_SpriteSheet_Attack_L_neutral_ground_5: 1150473378
+      NexusAnim_SpriteSheet_Attack_L_neutral_ground_6: 1576247904
+      NexusAnim_SpriteSheet_Attack_L_neutral_ground_7: 715824692
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
