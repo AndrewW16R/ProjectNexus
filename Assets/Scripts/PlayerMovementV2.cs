@@ -44,7 +44,7 @@ public class PlayerMovementV2 : MonoBehaviour
     //The direction the player is holding -1 = facing left  1 = facing right
     [SerializeField] private float heldDirection;
     private enum MovementState { idle, walking, running, jumping, doubleJump, falling, dashGrounded, dashAirForward, dashAirBackward }
-
+    private string currentAnim;
 
     // Start is called before the first frame update
     void Start()
@@ -78,7 +78,7 @@ public class PlayerMovementV2 : MonoBehaviour
 
         }
 
-        //Checks for player's held horizontal direction to inform which direction the sprite should be facing
+        //Checks for player's held so it can be referenced separately from the direction the player character is facing
         if (dirX > 0)
         {
             heldDirection = 1;
@@ -93,6 +93,8 @@ public class PlayerMovementV2 : MonoBehaviour
         {
             StartCoroutine(RefillDash(timeToRefillOneDash));
         }
+
+        Debug.Log(currentAnim);
 
     }
 
@@ -166,42 +168,61 @@ public class PlayerMovementV2 : MonoBehaviour
     private void UpdateAnimationUpdate()
     {
         //Local variable to hold the animation state
-        MovementState state;
+        //MovementState state;
 
-        if (dirX > 0f && isDashing == false)
+        if (dirX > 0f && isDashing == false && IsGrounded())
         {
-            state = MovementState.running;
+            //state = MovementState.running;
+            SetAnimationState("Nexus_Running");
             sprite.flipX = false;
         }
-        else if (dirX < 0f && isDashing == false)
+        else if (dirX < 0f && isDashing == false && IsGrounded())
         {
-            state = MovementState.running;
+            //state = MovementState.running;
+            SetAnimationState("Nexus_Running");
             sprite.flipX = true;
         }
-        else if  (facingDirection == -1)
+        else if (dirX == 0f && isDashing == false && IsGrounded())
         {
-            state = MovementState.idle;
-            sprite.flipX = true;
+            SetAnimationState("Nexus_Idle");
+            if(facingDirection == 1)
+            {
+                sprite.flipX = false;
+            }
+            else
+            {
+                sprite.flipX = true;
+            }
+            
         }
         else
         {
-            state = MovementState.idle;
-            sprite.flipX = false;
+            //state = MovementState.idle;
+            SetAnimationState(currentAnim);
+            //sprite.flipX = false;
         }
 
-        if (rb.velocity.y > .1f && facingDirection == 1)
+        if (rb.velocity.y > .1f && facingDirection == 1 && !IsGrounded())
         {
-            state = MovementState.jumping;
-            sprite.flipX = false;
+            if(currentAnim != "Nexus_Jumping")
+            {
+                SetAnimationState("Nexus_Jumping");
+                sprite.flipX = false;
+            }
+            
         }
-        else if(rb.velocity.y > .1f && facingDirection == -1)
+        else if(rb.velocity.y > .1f && facingDirection == -1 && !IsGrounded())
         {
-            state = MovementState.jumping;
-            sprite.flipX = true;
+            if (currentAnim != "Nexus_Jumping")
+            {
+                SetAnimationState("Nexus_Jumping");
+                sprite.flipX = true;
+            }
         }
-        else if (rb.velocity.y < -.1f && facingDirection == 1)
+        else if (rb.velocity.y < -.1f && facingDirection == 1 && !IsGrounded())
         {
-            state = MovementState.falling;
+            //state = MovementState.falling;
+            SetAnimationState("Nexus_Falling");
             sprite.flipX = false;
             if (fastFalling == false)
             {
@@ -209,9 +230,10 @@ public class PlayerMovementV2 : MonoBehaviour
                 fastFalling = true;
             }
         }
-        else if (rb.velocity.y < -.1f && facingDirection == -1)
+        else if (rb.velocity.y < -.1f && facingDirection == -1 && !IsGrounded())
         {
-            state = MovementState.falling;
+            //state = MovementState.falling;
+            SetAnimationState("Nexus_Falling");
             sprite.flipX = true;
             if (fastFalling == false)
             {
@@ -219,9 +241,11 @@ public class PlayerMovementV2 : MonoBehaviour
                 fastFalling = true;
             }
         }
+
 
             //Sets value for state parameter
-            anim.SetInteger("state", (int)state);
+           // anim.SetInteger("state", (int)state);
+
     }
 
     //Checks if player is standing on a navigable ground tile
@@ -262,5 +286,20 @@ public class PlayerMovementV2 : MonoBehaviour
         yield return new WaitForSeconds(timeToRefillOneDash);
         dashRefilling = false;
         dashesAvailable = dashesAvailable + 1;
+    }
+
+    void SetAnimationState(string newState)
+    {
+        if (newState == currentAnim)
+        {
+            return;
+        }
+        else
+        {
+            currentAnim = newState;
+            anim.Play(newState);
+            Debug.Log(currentAnim);
+        }
+        
     }
 }
