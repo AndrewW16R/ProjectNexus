@@ -63,7 +63,6 @@ public class PlayerMovementV2 : MonoBehaviour
     void FixedUpdate()
     {
         //Walking movement
-        dirX = Input.GetAxisRaw("Horizontal");
         if (isDashing == false)
         {
             rb.velocity = new Vector2(dirX * movementSpeed, rb.velocity.y);
@@ -79,6 +78,7 @@ public class PlayerMovementV2 : MonoBehaviour
 
         }
 
+        //Checks for player's held horizontal direction to inform which direction the sprite should be facing
         if (dirX > 0)
         {
             heldDirection = 1;
@@ -88,34 +88,22 @@ public class PlayerMovementV2 : MonoBehaviour
             heldDirection = -1;
         }
 
-
+        //Refills player's available dashes
         if (dashesAvailable < maxDashes && dashRefilling == false)
         {
             StartCoroutine(RefillDash(timeToRefillOneDash));
         }
 
-        if (Input.GetButtonDown("Fire3") && isDashing == false && dashesAvailable > 0)
-        {
-            
-
-            if (heldDirection != facingDirection && IsGrounded())
-            {
-                StartCoroutine(Dash(facingDirection));
-            }
-            else
-            {
-                StartCoroutine(Dash(heldDirection));
-            }
-            
-        }
-        
-
-
-
     }
 
     private void Update()
     {
+        //Recieves horizontal input
+        dirX = Input.GetAxisRaw("Horizontal");
+
+        //Checks for dash input and executes dash if under proper conditions
+        UpdateDash();
+        //Checks for jump input and executes jump in under proper conditions
         UpdateJump();
 
         //Updates sprite animation
@@ -157,6 +145,22 @@ public class PlayerMovementV2 : MonoBehaviour
             jumpsAvailable = jumpsAvailable - 1;
 
         }
+    }
+
+    private void UpdateDash()
+    {
+        if (Input.GetButtonDown("Fire3") && isDashing == false && dashesAvailable > 0)
+        {
+            if (heldDirection != facingDirection && IsGrounded())
+            {
+                StartCoroutine(Dash(facingDirection));
+            }
+            else
+            {
+                StartCoroutine(Dash(heldDirection));
+            }
+        }
+
     }
 
     private void UpdateAnimationUpdate()
@@ -220,6 +224,7 @@ public class PlayerMovementV2 : MonoBehaviour
             anim.SetInteger("state", (int)state);
     }
 
+    //Checks if player is standing on a navigable ground tile
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
@@ -250,6 +255,7 @@ public class PlayerMovementV2 : MonoBehaviour
         
     }
 
+    //Refills players available dashes
     private IEnumerator RefillDash(int amount)
     {
         dashRefilling = true;
