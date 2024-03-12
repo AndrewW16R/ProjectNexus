@@ -205,6 +205,18 @@ public class PlayerMovementV2 : MonoBehaviour
             }
             
         }
+        else if( isDashing == true && IsGrounded())
+        {
+            SetAnimationState("Nexus_GroundDash");
+            if (facingDirection == 1)
+            {
+                sprite.flipX = false;
+            }
+            else
+            {
+                sprite.flipX = true;
+            }
+        }
         else
         {
             //state = MovementState.idle;
