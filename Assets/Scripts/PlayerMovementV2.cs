@@ -202,39 +202,37 @@ public class PlayerMovementV2 : MonoBehaviour
             //sprite.flipX = false;
         }
 
-        if (rb.velocity.y > .1f && facingDirection == 1 && !IsGrounded() && jumpsAvailable == maxJumps -1) //First jump facing right
+        if (rb.velocity.y > .1f && !IsGrounded() && jumpsAvailable == maxJumps -1) //First jump facing right
         {
             if(currentAnim != "Nexus_Jumping")
             {
                 SetAnimationState("Nexus_Jumping");
-                sprite.flipX = false;
+                if (facingDirection == 1)
+                {
+                    sprite.flipX = false;
+                }
+                else
+                {
+                    sprite.flipX = true;
+                }
             }
             
         }
-        else if(rb.velocity.y > .1f && facingDirection == -1 && !IsGrounded() && jumpsAvailable == maxJumps - 1) //First jump facing left
-        {
-            if (currentAnim != "Nexus_Jumping")
-            {
-                SetAnimationState("Nexus_Jumping");
-                sprite.flipX = true;
-            }
-        }
-        if (rb.velocity.y > .1f && facingDirection == 1 && !IsGrounded() && jumpsAvailable < maxJumps - 1)
+        else if (rb.velocity.y > .1f && !IsGrounded() && jumpsAvailable < maxJumps - 1)
         {
             if (currentAnim != "Nexus_DoubleJump")
             {
                 SetAnimationState("Nexus_DoubleJump");
-                sprite.flipX = false;
+                if (facingDirection == 1)
+                {
+                    sprite.flipX = false;
+                }
+                else
+                {
+                    sprite.flipX = true;
+                }
             }
 
-        }
-        else if (rb.velocity.y > .1f && facingDirection == -1 && !IsGrounded() && jumpsAvailable != maxJumps - 1)
-        {
-            if (currentAnim != "Nexus_DoubleJump")
-            {
-                SetAnimationState("Nexus_DoubleJump");
-                sprite.flipX = true;
-            }
         }
         else if (rb.velocity.y < -.1f && facingDirection == 1 && !IsGrounded())
         {
