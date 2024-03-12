@@ -94,7 +94,7 @@ public class PlayerMovementV2 : MonoBehaviour
             StartCoroutine(RefillDash(timeToRefillOneDash));
         }
 
-        Debug.Log(currentAnim);
+        //Debug.Log(currentAnim);
 
     }
 
@@ -202,7 +202,7 @@ public class PlayerMovementV2 : MonoBehaviour
             //sprite.flipX = false;
         }
 
-        if (rb.velocity.y > .1f && !IsGrounded() && jumpsAvailable == maxJumps -1) //First jump facing right
+        if (rb.velocity.y > .1f && isDashing == false && !IsGrounded() && jumpsAvailable == maxJumps -1) //First jump
         {
             if(currentAnim != "Nexus_Jumping")
             {
@@ -218,7 +218,7 @@ public class PlayerMovementV2 : MonoBehaviour
             }
             
         }
-        else if (rb.velocity.y > .1f && !IsGrounded() && jumpsAvailable < maxJumps - 1)
+        else if (rb.velocity.y > .1f && isDashing == false && !IsGrounded() && jumpsAvailable < maxJumps - 1)
         {
             if (currentAnim != "Nexus_DoubleJump")
             {
@@ -234,22 +234,19 @@ public class PlayerMovementV2 : MonoBehaviour
             }
 
         }
-        else if (rb.velocity.y < -.1f && facingDirection == 1 && !IsGrounded())
+        else if (rb.velocity.y < -.1f && isDashing == false && !IsGrounded())
         {
             //state = MovementState.falling;
             SetAnimationState("Nexus_Falling");
-            sprite.flipX = false;
-            if (fastFalling == false)
+            if (facingDirection == 1)
             {
-                rb.gravityScale = rb.gravityScale * fastFallGravMultiplier;
-                fastFalling = true;
+                sprite.flipX = false;
             }
-        }
-        else if (rb.velocity.y < -.1f && facingDirection == -1 && !IsGrounded())
-        {
-            //state = MovementState.falling;
-            SetAnimationState("Nexus_Falling");
-            sprite.flipX = true;
+            else
+            {
+                sprite.flipX = true;
+            }
+
             if (fastFalling == false)
             {
                 rb.gravityScale = rb.gravityScale * fastFallGravMultiplier;
@@ -313,7 +310,7 @@ public class PlayerMovementV2 : MonoBehaviour
         {
             currentAnim = newState;
             anim.Play(newState);
-            Debug.Log(currentAnim);
+           // Debug.Log(currentAnim);
         }
         
     }
