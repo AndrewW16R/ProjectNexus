@@ -275,10 +275,39 @@ public class PlayerMovementV2 : MonoBehaviour
                 fastFalling = true;
             }
         }
+        else if (isDashing == true && !IsGrounded())
+        {
+          if(facingDirection == 1) //facing right
+            {
+                if (heldDirection == 1) //holding right
+                {
+                    SetAnimationState("Nexus_AirDashForward");
+                    sprite.flipX = false;
+                }
+                else // holding left
+                {
+                    SetAnimationState("Nexus_AirDashBackward");
+                    sprite.flipX = false;
+                }
+            }
+          else //facing left
+            {
+                if (heldDirection == -1) //holding left
+                {
+                    SetAnimationState("Nexus_AirDashForward");
+                    sprite.flipX = true;
+                }
+                else // holding right
+                {
+                    SetAnimationState("Nexus_AirDashBackward");
+                    sprite.flipX = true;
+                }
+            }
+        }
 
 
             //Sets value for state parameter
-           // anim.SetInteger("state", (int)state);
+            // anim.SetInteger("state", (int)state);
 
     }
 
