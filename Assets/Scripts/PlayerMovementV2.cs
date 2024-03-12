@@ -170,16 +170,26 @@ public class PlayerMovementV2 : MonoBehaviour
         //Local variable to hold the animation state
         //MovementState state;
 
-        if (dirX > 0f && isDashing == false && IsGrounded())
+        if (dirX >= 0.5f && isDashing == false && IsGrounded())
         {
             //state = MovementState.running;
             SetAnimationState("Nexus_Running");
             sprite.flipX = false;
         }
-        else if (dirX < 0f && isDashing == false && IsGrounded())
+        else if (dirX <= -0.5f && isDashing == false && IsGrounded())
         {
             //state = MovementState.running;
             SetAnimationState("Nexus_Running");
+            sprite.flipX = true;
+        }
+        else if (dirX < 0.5f && dirX > 0f && isDashing == false && IsGrounded())
+        {
+            SetAnimationState("Nexus_Walking");
+            sprite.flipX = false;
+        }
+        else if (dirX > -0.5f && dirX < 0f && isDashing == false && IsGrounded())
+        {
+            SetAnimationState("Nexus_Walking");
             sprite.flipX = true;
         }
         else if (dirX == 0f && isDashing == false && IsGrounded())
