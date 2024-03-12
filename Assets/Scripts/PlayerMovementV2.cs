@@ -202,7 +202,7 @@ public class PlayerMovementV2 : MonoBehaviour
             //sprite.flipX = false;
         }
 
-        if (rb.velocity.y > .1f && facingDirection == 1 && !IsGrounded())
+        if (rb.velocity.y > .1f && facingDirection == 1 && !IsGrounded() && jumpsAvailable == maxJumps -1) //First jump facing right
         {
             if(currentAnim != "Nexus_Jumping")
             {
@@ -211,11 +211,28 @@ public class PlayerMovementV2 : MonoBehaviour
             }
             
         }
-        else if(rb.velocity.y > .1f && facingDirection == -1 && !IsGrounded())
+        else if(rb.velocity.y > .1f && facingDirection == -1 && !IsGrounded() && jumpsAvailable == maxJumps - 1) //First jump facing left
         {
             if (currentAnim != "Nexus_Jumping")
             {
                 SetAnimationState("Nexus_Jumping");
+                sprite.flipX = true;
+            }
+        }
+        if (rb.velocity.y > .1f && facingDirection == 1 && !IsGrounded() && jumpsAvailable < maxJumps - 1)
+        {
+            if (currentAnim != "Nexus_DoubleJump")
+            {
+                SetAnimationState("Nexus_DoubleJump");
+                sprite.flipX = false;
+            }
+
+        }
+        else if (rb.velocity.y > .1f && facingDirection == -1 && !IsGrounded() && jumpsAvailable != maxJumps - 1)
+        {
+            if (currentAnim != "Nexus_DoubleJump")
+            {
+                SetAnimationState("Nexus_DoubleJump");
                 sprite.flipX = true;
             }
         }
