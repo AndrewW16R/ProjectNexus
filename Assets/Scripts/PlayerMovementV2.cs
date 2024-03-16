@@ -22,7 +22,7 @@ public class PlayerMovementV2 : MonoBehaviour
     [SerializeField] private LayerMask jumpableGround;
 
     private bool isDashing = false;
-    [SerializeField] private int dashesAvailable;
+    [SerializeField] public int dashesAvailable;
     private int maxDashes;
     private bool dashRefilling = false;
     [SerializeField] private float dashDuration;
@@ -258,7 +258,7 @@ public class PlayerMovementV2 : MonoBehaviour
         }
         else if (rb.velocity.y < -.1f && isDashing == false && !IsGrounded())
         {
-            //state = MovementState.falling;
+            
             SetAnimationState("Nexus_Falling");
             if (facingDirection == 1)
             {
