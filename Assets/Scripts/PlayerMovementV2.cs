@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovementV2 : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    [HideInInspector]public Rigidbody2D rb;
     private BoxCollider2D coll;
     private SpriteRenderer sprite;
     private Animator anim;
@@ -31,7 +31,7 @@ public class PlayerMovementV2 : MonoBehaviour
 
 
     //left/right input
-    private float dirX = 0;
+    [HideInInspector]public float dirX = 0;
 
 
     [SerializeField] private float movementSpeed = 6f;

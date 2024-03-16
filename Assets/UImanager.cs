@@ -8,7 +8,11 @@ public class UImanager : MonoBehaviour
 
     PlayerMovementV2 player;
     public GameObject nexus;
+
     public Text textFieldDashes;
+    public Text textFieldHorizontalVelocity;
+    public Text textFieldVerticalVelocity;
+    public Text textFieldHorizontalInput;
 
     // Start is called before the first frame update
     void Start()
@@ -22,5 +26,8 @@ public class UImanager : MonoBehaviour
     void FixedUpdate()
     {
         textFieldDashes.text = "Dashes Available: " + player.dashesAvailable.ToString();
+        textFieldHorizontalVelocity.text = "H. Vel: " + player.rb.velocity.x.ToString();
+        textFieldVerticalVelocity.text = "V. Vel: " + player.rb.velocity.y.ToString();
+        textFieldHorizontalInput.text = "H. Input: " + player.dirX.ToString();
     }
 }
