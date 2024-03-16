@@ -28,6 +28,7 @@ public class PlayerMovementV2 : MonoBehaviour
     [SerializeField] private float dashDuration;
     [SerializeField] private float dashSpeed;
     [SerializeField] private int timeToRefillOneDash = 1;
+    private float airDashDir; //Stores value of which driection player is air dashing to inform animator which air dash animation to play
 
 
     //left/right input
@@ -153,13 +154,31 @@ public class PlayerMovementV2 : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire3") && isDashing == false && dashesAvailable > 0)
         {
-            if (heldDirection != facingDirection && IsGrounded())
+            if (IsGrounded())
             {
-                StartCoroutine(Dash(facingDirection));
+                if(heldDirection != facingDirection)
+                {
+                    StartCoroutine(Dash(facingDirection));
+                }
+                else
+                {
+                   StartCoroutine(Dash(heldDirection));
+                }
+                
             }
             else
             {
-                StartCoroutine(Dash(heldDirection));
+                if (heldDirection != facingDirection && dirX == 0)
+                {
+                    airDashDir = facingDirection;
+                    StartCoroutine(Dash(facingDirection));
+                }
+                else
+                {
+                    airDashDir = heldDirection;
+                    StartCoroutine(Dash(heldDirection));
+                }
+                
             }
         }
 
@@ -277,14 +296,15 @@ public class PlayerMovementV2 : MonoBehaviour
         }
         else if (isDashing == true && !IsGrounded())
         {
-          if(facingDirection == 1) //facing right
+         
+            if(facingDirection == 1) //facing right
             {
-                if (heldDirection == 1) //holding right
+                if (airDashDir == 1) //dashing right
                 {
                     SetAnimationState("Nexus_AirDashForward");
                     sprite.flipX = false;
                 }
-                else // holding left
+                else // dashing left
                 {
                     SetAnimationState("Nexus_AirDashBackward");
                     sprite.flipX = false;
@@ -292,22 +312,18 @@ public class PlayerMovementV2 : MonoBehaviour
             }
           else //facing left
             {
-                if (heldDirection == -1) //holding left
+                if (airDashDir == -1) //dashing left
                 {
                     SetAnimationState("Nexus_AirDashForward");
                     sprite.flipX = true;
                 }
-                else // holding right
+                else // dashing right
                 {
                     SetAnimationState("Nexus_AirDashBackward");
                     sprite.flipX = true;
                 }
             }
         }
-
-
-            //Sets value for state parameter
-            // anim.SetInteger("state", (int)state);
 
     }
 
