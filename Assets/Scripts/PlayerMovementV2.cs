@@ -47,6 +47,11 @@ public class PlayerMovementV2 : MonoBehaviour
     private enum MovementState { idle, walking, running, jumping, doubleJump, falling, dashGrounded, dashAirForward, dashAirBackward }
     private string currentAnim;
 
+    private bool isAttacking;
+    private string currentAttackName; //this variable is not currently utilized but could be implemented to indicate which attack is being used
+  [SerializeField]  private int currentAttackDuration;
+  
+
     // Start is called before the first frame update
     void Start()
     {
@@ -108,6 +113,8 @@ public class PlayerMovementV2 : MonoBehaviour
         UpdateDash();
         //Checks for jump input and executes jump in under proper conditions
         UpdateJump();
+
+        UpdateAttack();
 
         //Updates sprite animation
         UpdateAnimationUpdate();
@@ -184,34 +191,53 @@ public class PlayerMovementV2 : MonoBehaviour
 
     }
 
+    private void UpdateAttack()
+    {
+        if(Input.GetButtonDown("Fire1") && isDashing == false && IsGrounded() && isAttacking == false) //This is currently exclusive coded for L_Grounded_Neutral for testing purposes
+        {
+            isAttacking = true;
+            currentAttackDuration = 9;
+            currentAttackName = "L_Grounded_Neutral";
+        }
+        else if(currentAttackDuration > 0) //if the attack animation is currently playing, wait subtract one from its duration
+        {
+            currentAttackDuration = currentAttackDuration - 1;
+        }
+        else
+        {
+            isAttacking = false;
+            currentAttackName = "";
+        }
+    }
+
     private void UpdateAnimationUpdate()
     {
         //Local variable to hold the animation state
         //MovementState state;
 
-        if (dirX >= 0.5f && isDashing == false && IsGrounded())
+        if (dirX >= 0.5f && isDashing == false && IsGrounded() && isAttacking == false) //Anim Running Right
         {
             //state = MovementState.running;
             SetAnimationState("Nexus_Running");
             sprite.flipX = false;
         }
-        else if (dirX <= -0.5f && isDashing == false && IsGrounded())
+        else if (dirX <= -0.5f && isDashing == false && IsGrounded() && isAttacking == false) //Anim Running Left
         {
             //state = MovementState.running;
             SetAnimationState("Nexus_Running");
             sprite.flipX = true;
         }
-        else if (dirX < 0.5f && dirX > 0f && isDashing == false && IsGrounded())
+        else if (dirX < 0.5f && dirX > 0f && isDashing == false && IsGrounded() && isAttacking == false) //Anim Walking Right
         {
             SetAnimationState("Nexus_Walking");
             sprite.flipX = false;
         }
-        else if (dirX > -0.5f && dirX < 0f && isDashing == false && IsGrounded())
+        else if (dirX > -0.5f && dirX < 0f && isDashing == false && IsGrounded() && isAttacking == false) //Anim Walking Left
         {
             SetAnimationState("Nexus_Walking");
             sprite.flipX = true;
         }
-        else if (dirX == 0f && isDashing == false && IsGrounded())
+        else if (dirX == 0f && isDashing == false && IsGrounded() && isAttacking == false) //Anim Idle
         {
             SetAnimationState("Nexus_Idle");
             if(facingDirection == 1)
@@ -224,9 +250,21 @@ public class PlayerMovementV2 : MonoBehaviour
             }
             
         }
-        else if( isDashing == true && IsGrounded())
+        else if( isDashing == true && IsGrounded() && isAttacking == false) //Anim Ground Dash
         {
             SetAnimationState("Nexus_GroundDash");
+            if (facingDirection == 1)
+            {
+                sprite.flipX = false;
+            }
+            else
+            {
+                sprite.flipX = true;
+            }
+        }
+        else if(dirX == 0 && isDashing == false && IsGrounded() && isAttacking == true) //Anim Attack L Grounded Neutral
+        {
+            SetAnimationState("Nexus_Attack_L_Grounded_Neutral");
             if (facingDirection == 1)
             {
                 sprite.flipX = false;
