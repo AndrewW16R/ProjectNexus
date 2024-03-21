@@ -9,15 +9,22 @@ public class PlayerAttack : MonoBehaviour
     private string currentAttackName; //this variable is not currently utilized but could be implemented to indicate which attack is being used
     [SerializeField] private int currentAttackDuration;
 
+    public GameObject attackHitbox_LGN;
+    public int prevAttackDir;
+
     PlayerMovementV2 playerMovement;
+    PlayerAnimation playerAnimation;
 
     // Start is called before the first frame update
     void Start()
     {
         //Gets playerMovementV2 script
         playerMovement = gameObject.GetComponent<PlayerMovementV2>();
+        playerAnimation = gameObject.GetComponent<PlayerAnimation>();
         attackDurationUpdateQued = false;
         isAttacking = false;
+
+        prevAttackDir = 0;
 }
 
     // Update is called once per frame
@@ -28,6 +35,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void FixedUpdate()
     {
+        UpdateAttackHitbox();
         UpdateAttackDuration();
     }
 
@@ -51,6 +59,24 @@ public class PlayerAttack : MonoBehaviour
         }
 
        
+    }
+
+    private void UpdateAttackHitbox()
+    {
+        if (currentAttackName == "L_Grounded_Neutral")
+        {
+            if (currentAttackDuration <= 6 && currentAttackDuration >= 4)
+            {
+               
+                //set hitbox active
+                attackHitbox_LGN.gameObject.SetActive(true);
+            }
+            else
+            {
+                //set hitbox inactive
+                attackHitbox_LGN.gameObject.SetActive(false);
+            }
+        }
     }
     private void UpdateAttackDuration()
     {
