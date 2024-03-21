@@ -246,6 +246,11 @@ MonoBehaviour:
   textFieldHorizontalVelocity: {fileID: 1541333466}
   textFieldVerticalVelocity: {fileID: 1356668117}
   textFieldHorizontalInput: {fileID: 1441086544}
+--- !u!1 &292296553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2270211713735875241, guid: 72b6bf12290eab449add2029dc80a89b, type: 3}
+  m_PrefabInstance: {fileID: 2270211715310945549}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &351940783
 GameObject:
   m_ObjectHideFlags: 0
@@ -4511,6 +4516,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2270211713735875242, guid: 72b6bf12290eab449add2029dc80a89b, type: 3}
   m_PrefabInstance: {fileID: 2270211715310945549}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1646419880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292296553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2fe77a136f7674488519b2b7b702859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttacking: 0
+  attackDurationUpdateQued: 0
+  currentAttackDuration: 0
 --- !u!1 &1677891440
 GameObject:
   m_ObjectHideFlags: 0

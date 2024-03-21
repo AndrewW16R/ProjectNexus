@@ -11,6 +11,7 @@ public class PlayerMovementV2 : MonoBehaviour
 
     //How many jumps the player can do before needing to be grounded again
     [SerializeField] private int jumpsAvailable = 2;
+    //is assigned the number of jumps available from frame 1, used to determine how many jumps the player gets when jumps refrsh
     private int maxJumps;
     // Has the player used their first jump
     private bool initialJumpUsed = false;
@@ -21,7 +22,7 @@ public class PlayerMovementV2 : MonoBehaviour
 
     [SerializeField] private LayerMask jumpableGround;
 
-    private bool isDashing = false;
+    [HideInInspector] public bool isDashing = false;
     [SerializeField] public int dashesAvailable;
     private int maxDashes;
     private bool dashRefilling = false;
@@ -47,6 +48,8 @@ public class PlayerMovementV2 : MonoBehaviour
     private enum MovementState { idle, walking, running, jumping, doubleJump, falling, dashGrounded, dashAirForward, dashAirBackward }
     private string currentAnim;
 
+    [HideInInspector] public PlayerAttack playerAttack;
+
     private bool isAttacking;
     private string currentAttackName; //this variable is not currently utilized but could be implemented to indicate which attack is being used
   [SerializeField]  private int currentAttackDuration;
@@ -59,6 +62,8 @@ public class PlayerMovementV2 : MonoBehaviour
         coll = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        playerAttack = gameObject.GetComponent<PlayerAttack>();
+
         initialGravity = rb.gravityScale;
         maxJumps = jumpsAvailable;
         maxDashes = dashesAvailable;
@@ -114,7 +119,7 @@ public class PlayerMovementV2 : MonoBehaviour
         //Checks for jump input and executes jump in under proper conditions
         UpdateJump();
 
-        UpdateAttack();
+        //UpdateAttack();
 
         //Updates sprite animation
         UpdateAnimationUpdate();
@@ -191,6 +196,7 @@ public class PlayerMovementV2 : MonoBehaviour
 
     }
 
+    /*
     private void UpdateAttack()
     {
         if(Input.GetButtonDown("Fire1") && isDashing == false && IsGrounded() && isAttacking == false) //This is currently exclusive coded for L_Grounded_Neutral for testing purposes
@@ -209,13 +215,26 @@ public class PlayerMovementV2 : MonoBehaviour
             currentAttackName = "";
         }
     }
+    */
 
     private void UpdateAnimationUpdate()
     {
         //Local variable to hold the animation state
         //MovementState state;
 
-        if (dirX >= 0.5f && isDashing == false && IsGrounded() && isAttacking == false) //Anim Running Right
+        if (dirX == 0 && isDashing == false && IsGrounded() && playerAttack.isAttacking == true) //Anim Attack L Grounded Neutral
+        {
+            SetAnimationState("Nexus_Attack_L_Grounded_Neutral");
+            if (facingDirection == 1)
+            {
+                sprite.flipX = false;
+            }
+            else
+            {
+                sprite.flipX = true;
+            }
+        }
+        else if (dirX >= 0.5f && isDashing == false && IsGrounded() && isAttacking == false) //Anim Running Right
         {
             //state = MovementState.running;
             SetAnimationState("Nexus_Running");
@@ -253,18 +272,6 @@ public class PlayerMovementV2 : MonoBehaviour
         else if( isDashing == true && IsGrounded() && isAttacking == false) //Anim Ground Dash
         {
             SetAnimationState("Nexus_GroundDash");
-            if (facingDirection == 1)
-            {
-                sprite.flipX = false;
-            }
-            else
-            {
-                sprite.flipX = true;
-            }
-        }
-        else if(dirX == 0 && isDashing == false && IsGrounded() && isAttacking == true) //Anim Attack L Grounded Neutral
-        {
-            SetAnimationState("Nexus_Attack_L_Grounded_Neutral");
             if (facingDirection == 1)
             {
                 sprite.flipX = false;
@@ -366,7 +373,7 @@ public class PlayerMovementV2 : MonoBehaviour
     }
 
     //Checks if player is standing on a navigable ground tile
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
