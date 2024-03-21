@@ -9,11 +9,13 @@ public class PlayerAttack : MonoBehaviour
     private string currentAttackName; //this variable is not currently utilized but could be implemented to indicate which attack is being used
     [SerializeField] private int currentAttackDuration;
 
+    public GameObject hitboxGroup;
     public GameObject attackHitbox_LGN;
     public int prevAttackDir;
 
     PlayerMovementV2 playerMovement;
     PlayerAnimation playerAnimation;
+    public Vector3 currentHitboxScale;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +51,7 @@ public class PlayerAttack : MonoBehaviour
         }
         else if (currentAttackDuration > 0) //if the attack animation is currently playing, wait subtract one from its duration
         {
+            UpdateHitboxDirection();
             attackDurationUpdateQued = true;
     
         }
@@ -67,7 +70,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (currentAttackDuration <= 6 && currentAttackDuration >= 4)
             {
-               
+                
                 //set hitbox active
                 attackHitbox_LGN.gameObject.SetActive(true);
             }
@@ -85,6 +88,31 @@ public class PlayerAttack : MonoBehaviour
             currentAttackDuration = currentAttackDuration - 1;
             attackDurationUpdateQued = false;
         }
+        
+    }
+
+    private void UpdateHitboxDirection() //flips attack hitbox gameobjects depend on facingDirection, does not yet account for back air
+    {
+        if(playerMovement.facingDirection == 1 && prevAttackDir == 0)
+        {
+            prevAttackDir = 1;
+        }
+        else if(playerMovement.facingDirection == -1 && prevAttackDir == 0) //has not attacked before, is facing left
+        {
+            hitboxGroup.transform.localScale = new Vector3(-1, 1, 1);
+            prevAttackDir = -1;
+        }
+        else if (playerMovement.facingDirection == 1 && prevAttackDir == -1) //is facing right, prev attack was facing left
+        {
+            hitboxGroup.transform.localScale = new Vector3(1, 1, 1);
+            prevAttackDir = 1;
+        }
+        else if (playerMovement.facingDirection == -1 && prevAttackDir == 1) //is facing left, prev attack was facing right
+        {
+            hitboxGroup.transform.localScale = new Vector3(-1, 1, 1);
+            prevAttackDir = -1;
+        }
+        Debug.Log(prevAttackDir);
         
     }
 

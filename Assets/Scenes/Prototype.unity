@@ -4785,7 +4785,10 @@ MonoBehaviour:
   isAttacking: 0
   attackDurationUpdateQued: 0
   currentAttackDuration: 0
+  hitboxGroup: {fileID: 189702987}
   attackHitbox_LGN: {fileID: 1185043692}
+  prevAttackDir: 0
+  currentHitboxScale: {x: 0, y: 0, z: 0}
 --- !u!114 &1646419886
 MonoBehaviour:
   m_ObjectHideFlags: 0
