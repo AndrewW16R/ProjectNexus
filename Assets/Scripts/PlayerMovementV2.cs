@@ -167,7 +167,7 @@ public class PlayerMovementV2 : MonoBehaviour
 
     private void UpdateDash()
     {
-        if (Input.GetButtonDown("Fire3") && isDashing == false && dashesAvailable > 0 && playerAttack.stopDashing == false)
+        if (Input.GetButtonDown("Dash") && isDashing == false && dashesAvailable > 0 && playerAttack.stopDashing == false)
         {
             if (IsGrounded())
             {
