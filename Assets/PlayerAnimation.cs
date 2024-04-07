@@ -29,8 +29,19 @@ public class PlayerAnimation : MonoBehaviour
     {
         //Local variable to hold the animation state
         //MovementState state;
-
-        if (playerMovement.dirX == 0 && playerMovement.isDashing == false && playerMovement.IsGrounded() && playerAttack.isAttacking == true) //Anim Attack L Grounded Neutral
+        if(playerMovement.IsGrounded() && playerMovement.isBlocking == true)
+        {
+            SetAnimationState("Nexus_Block");
+            if (playerMovement.facingDirection == 1)
+            {
+                sprite.flipX = false;
+            }
+            else
+            {
+                sprite.flipX = true;
+            }
+        } //Player is blocking
+        else if (playerMovement.dirX == 0 && playerMovement.isDashing == false && playerMovement.IsGrounded() && playerAttack.isAttacking == true && playerMovement.isBlocking == false) //Anim Attack L Grounded Neutral
         {
             SetAnimationState("Nexus_Attack_L_Grounded_Neutral");
             if (playerMovement.facingDirection == 1)
@@ -42,29 +53,29 @@ public class PlayerAnimation : MonoBehaviour
                 sprite.flipX = true;
             }
         }
-        else if (playerMovement.dirX >= 0.5f && playerMovement.isDashing == false && playerMovement.IsGrounded() && playerAttack.isAttacking == false) //Anim Running Right
+        else if (playerMovement.dirX >= 0.5f && playerMovement.isDashing == false && playerMovement.IsGrounded() && playerAttack.isAttacking == false && playerMovement.isBlocking == false) //Anim Running Right
         {
             //state = MovementState.running;
             SetAnimationState("Nexus_Running");
             sprite.flipX = false;
         }
-        else if (playerMovement.dirX <= -0.5f && playerMovement.isDashing == false && playerMovement.IsGrounded() && playerAttack.isAttacking == false) //Anim Running Left
+        else if (playerMovement.dirX <= -0.5f && playerMovement.isDashing == false && playerMovement.IsGrounded() && playerAttack.isAttacking == false && playerMovement.isBlocking == false) //Anim Running Left
         {
             //state = MovementState.running;
             SetAnimationState("Nexus_Running");
             sprite.flipX = true;
         }
-        else if (playerMovement.dirX < 0.5f && playerMovement.dirX > 0f && playerMovement.isDashing == false && playerMovement.IsGrounded() && playerAttack.isAttacking == false) //Anim Walking Right
+        else if (playerMovement.dirX < 0.5f && playerMovement.dirX > 0f && playerMovement.isDashing == false && playerMovement.IsGrounded() && playerAttack.isAttacking == false && playerMovement.isBlocking == false) //Anim Walking Right
         {
             SetAnimationState("Nexus_Walking");
             sprite.flipX = false;
         }
-        else if (playerMovement.dirX > -0.5f && playerMovement.dirX < 0f && playerMovement.isDashing == false && playerMovement.IsGrounded() && playerAttack.isAttacking == false) //Anim Walking Left
+        else if (playerMovement.dirX > -0.5f && playerMovement.dirX < 0f && playerMovement.isDashing == false && playerMovement.IsGrounded() && playerAttack.isAttacking == false && playerMovement.isBlocking == false) //Anim Walking Left
         {
             SetAnimationState("Nexus_Walking");
             sprite.flipX = true;
         }
-        else if (playerMovement.dirX == 0f && playerMovement.isDashing == false && playerMovement.IsGrounded() && playerAttack.isAttacking == false) //Anim Idle
+        else if (playerMovement.dirX == 0f && playerMovement.isDashing == false && playerMovement.IsGrounded() && playerAttack.isAttacking == false && playerMovement.isBlocking == false) //Anim Idle
         {
             SetAnimationState("Nexus_Idle");
             if (playerMovement.facingDirection == 1)
@@ -77,7 +88,7 @@ public class PlayerAnimation : MonoBehaviour
             }
 
         }
-        else if (playerMovement.isDashing == true && playerMovement.IsGrounded() && playerAttack.isAttacking == false) //Anim Ground Dash
+        else if (playerMovement.isDashing == true && playerMovement.IsGrounded() && playerAttack.isAttacking == false && playerMovement.isBlocking == false) //Anim Ground Dash
         {
             SetAnimationState("Nexus_GroundDash");
             if (playerMovement.facingDirection == 1)
