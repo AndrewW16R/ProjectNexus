@@ -6,6 +6,10 @@ public class PlayerAttack : MonoBehaviour
 {
     public bool isAttacking;
     public bool attackDurationUpdateQued;
+    public bool stopHorizontalVel; //set to true when a move should stop/prevent horizontal vel
+    public bool stopHorizontalInput; //set to true when a move should stop/prevent horizontal input
+    public bool stopDashing; //set to true when a move should stop/prevent dashing
+    public bool stopJumpInput; //set to true when a move should stop Jump/prevent input
     private string currentAttackName; //this variable is not currently utilized but could be implemented to indicate which attack is being used
     [SerializeField] private int currentAttackDuration;
 
@@ -25,6 +29,8 @@ public class PlayerAttack : MonoBehaviour
         playerAnimation = gameObject.GetComponent<PlayerAnimation>();
         attackDurationUpdateQued = false;
         isAttacking = false;
+        stopHorizontalVel = false;
+        stopHorizontalInput = false;
 
         prevAttackDir = 0;
 }
@@ -46,10 +52,16 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && playerMovement.isDashing == false && playerMovement.IsGrounded() && isAttacking == false) //This is currently exclusive coded for L_Grounded_Neutral for testing purposes
         {
             isAttacking = true;
+
+            UpdateHorizontalInputPrevention(true);
+            UpdateHorizontalVelocityPrevention(true); //is not currently implemented into movement script
+            UpdateDashingPrevention(true);
+            UpdateJumpInputPrevention(true);
+
             currentAttackDuration = 9;
             currentAttackName = "L_Grounded_Neutral";
         }
-        else if (currentAttackDuration > 0) //if the attack animation is currently playing, wait subtract one from its duration
+        else if (currentAttackDuration > 0 && playerMovement.IsGrounded()) //if the attack animation is currently playing, wait subtract one from its duration
         {
             UpdateHitboxDirection();
             attackDurationUpdateQued = true;
@@ -58,6 +70,11 @@ public class PlayerAttack : MonoBehaviour
         else
         {
             isAttacking = false;
+            currentAttackDuration = 0; //ensures that attack duration is set back to 0 if play jumps and press attack button at the same time
+            UpdateHorizontalInputPrevention(false);
+            UpdateHorizontalVelocityPrevention(false);
+            UpdateDashingPrevention(false);
+            UpdateJumpInputPrevention(false);
             currentAttackName = "";
         }
 
@@ -114,6 +131,26 @@ public class PlayerAttack : MonoBehaviour
         }
         Debug.Log(prevAttackDir);
         
+    }
+
+    public void UpdateHorizontalInputPrevention(bool isPrevented)
+    {
+        stopHorizontalInput = isPrevented;
+    }
+
+    public void UpdateHorizontalVelocityPrevention(bool isPrevented)
+    {
+        stopHorizontalVel = isPrevented;
+    }
+
+    public void UpdateDashingPrevention(bool isPrevented)
+    {
+        stopDashing = isPrevented;
+    }
+
+    public void UpdateJumpInputPrevention(bool isPrevented)
+    {
+        stopJumpInput = isPrevented;
     }
 
 }

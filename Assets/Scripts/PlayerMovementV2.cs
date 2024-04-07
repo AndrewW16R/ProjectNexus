@@ -64,8 +64,10 @@ public class PlayerMovementV2 : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
+
         //Walking movement
-        if (isDashing == false)
+        if (isDashing == false && playerAttack.stopHorizontalVel == false)
         {
             rb.velocity = new Vector2(dirX * movementSpeed, rb.velocity.y);
 
@@ -100,9 +102,17 @@ public class PlayerMovementV2 : MonoBehaviour
 
     private void Update()
     {
-        //Recieves horizontal input
-        dirX = Input.GetAxisRaw("Horizontal");
 
+        if (playerAttack.stopHorizontalInput == true)
+        {
+            dirX = 0;
+        }
+        else
+        {
+            //Recieves horizontal input
+            dirX = Input.GetAxisRaw("Horizontal");
+        }
+        
         //Checks for dash input and executes dash if under proper conditions
         UpdateDash();
         //Checks for jump input and executes jump in under proper conditions
@@ -121,6 +131,8 @@ public class PlayerMovementV2 : MonoBehaviour
         }
 
         //jumping
+        if (playerAttack.stopJumpInput == false) //does not read/use jump input if anoter action is dictating that the player cannot currently jump
+        { 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
@@ -144,6 +156,7 @@ public class PlayerMovementV2 : MonoBehaviour
             jumpsAvailable = jumpsAvailable - 1;
 
         }
+         }
 
         if (rb.velocity.y < -.1f && isDashing == false && !IsGrounded() && fastFalling == false)
         {
@@ -154,7 +167,7 @@ public class PlayerMovementV2 : MonoBehaviour
 
     private void UpdateDash()
     {
-        if (Input.GetButtonDown("Fire3") && isDashing == false && dashesAvailable > 0)
+        if (Input.GetButtonDown("Fire3") && isDashing == false && dashesAvailable > 0 && playerAttack.stopDashing == false)
         {
             if (IsGrounded())
             {
