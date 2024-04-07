@@ -241,12 +241,13 @@ public class PlayerMovementV2 : MonoBehaviour
 
     private void UpdateBlock()
     {
-        if (Input.GetButton("Block") && playerAttack.isAttacking == false && IsGrounded())
+        if (Input.GetButton("Block") && playerAttack.isAttacking == false && IsGrounded() && isDashing == false)
         {
             isBlocking = true;
-            playerAttack.UpdateHorizontalVelocityPrevention(true); 
+            playerAttack.UpdateHorizontalVelocityPrevention(true);
+            rb.velocity = new Vector2(0, rb.velocity.y);
             //play block anim
-                }
+        }
         else
         {
             isBlocking = false;
