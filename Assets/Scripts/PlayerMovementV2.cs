@@ -29,6 +29,7 @@ public class PlayerMovementV2 : MonoBehaviour
     [SerializeField] private int timeToRefillOneDash = 1;
     public float airDashDir; //Stores value of which driection player is air dashing to inform animator which air dash animation to play
 
+    public bool isBlocking;
 
     //left/right input
     [HideInInspector]public float dirX = 0;
@@ -58,13 +59,14 @@ public class PlayerMovementV2 : MonoBehaviour
         initialGravity = rb.gravityScale;
         maxJumps = jumpsAvailable;
         maxDashes = dashesAvailable;
+        isBlocking = false;
 
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        UpdateBlock();
 
         //Walking movement
         if (isDashing == false && playerAttack.stopHorizontalVel == false)
@@ -235,6 +237,21 @@ public class PlayerMovementV2 : MonoBehaviour
         yield return new WaitForSeconds(timeToRefillOneDash);
         dashRefilling = false;
         dashesAvailable = dashesAvailable + 1;
+    }
+
+    private void UpdateBlock()
+    {
+        if (Input.GetButton("Block") && playerAttack.isAttacking == false && IsGrounded())
+        {
+            isBlocking = true;
+            playerAttack.UpdateHorizontalVelocityPrevention(true); 
+            //play block anim
+                }
+        else
+        {
+            isBlocking = false;
+            playerAttack.UpdateHorizontalVelocityPrevention(false);
+        }
     }
 
 }

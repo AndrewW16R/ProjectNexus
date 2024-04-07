@@ -54,7 +54,7 @@ public class PlayerAttack : MonoBehaviour
             isAttacking = true;
 
             UpdateHorizontalInputPrevention(true);
-           // UpdateHorizontalVelocityPrevention(true); //is not currently implemented into movement script
+           // UpdateHorizontalVelocityPrevention(true); //is not currently implemented into movement script correctly
             UpdateDashingPrevention(true);
             UpdateJumpInputPrevention(true);
 
