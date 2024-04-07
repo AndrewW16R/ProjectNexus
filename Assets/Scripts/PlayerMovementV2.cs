@@ -171,7 +171,7 @@ public class PlayerMovementV2 : MonoBehaviour
     {
         if (Input.GetButtonDown("Dash") && isDashing == false && dashesAvailable > 0 && playerAttack.stopDashing == false)
         {
-            if (IsGrounded())
+            if (IsGrounded() && isBlocking == false)
             {
                 if(heldDirection != facingDirection)
                 {
@@ -180,6 +180,19 @@ public class PlayerMovementV2 : MonoBehaviour
                 else
                 {
                    StartCoroutine(Dash(heldDirection));
+                }
+                
+            }
+            else if(IsGrounded() && isBlocking == true)
+            {
+                if(dirX != 0)
+                {
+                    StartCoroutine(Dash(heldDirection));
+                    facingDirection = heldDirection;
+                }
+                else
+                {
+                    StartCoroutine(Dash(facingDirection));
                 }
                 
             }
@@ -246,6 +259,14 @@ public class PlayerMovementV2 : MonoBehaviour
             isBlocking = true;
             playerAttack.UpdateHorizontalVelocityPrevention(true);
             rb.velocity = new Vector2(0, rb.velocity.y);
+            if (dirX > 0 && IsGrounded())
+            {
+                facingDirection = 1;
+            }
+            else if (dirX < 0 && IsGrounded())
+            {
+                facingDirection = -1;
+            }
             //play block anim
         }
         else
