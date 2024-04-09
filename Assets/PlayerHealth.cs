@@ -11,17 +11,20 @@ public class PlayerHealth : MonoBehaviour
 
     PlayerMovementV2 playerMovement;
     PlayerAnimation playerAnimation;
+    [HideInInspector] public PlayerAttack playerAttack;
+
     // Start is called before the first frame update
     void Start()
     {
         playerMovement = gameObject.GetComponent<PlayerMovementV2>();
         playerAnimation = gameObject.GetComponent<PlayerAnimation>();
+        playerAttack = gameObject.GetComponent<PlayerAttack>();
 
-        if (maxHealth == null)
+        if (maxHealth == 0)
         {
             maxHealth = 100;
         }
-        if (currentHealth == null)
+        if (currentHealth == 0)
         {
             currentHealth = maxHealth;
         }
@@ -38,17 +41,11 @@ public class PlayerHealth : MonoBehaviour
     { 
         if(Input.GetButtonDown("Fire2") && playerMovement.isBlocking == false) //when top face button is pressed, simulates getting hit by attack
         {
-            ApplyHitstun(10);
+            ApplyHitstun(60);
         }
 
-        if (inHitstun == true && remainingHitstun > 0)
-        {
-            remainingHitstun = remainingHitstun - 1;
-        }
-        else //if hitstunDuration runs out, no longer in hitstun
-        {
-            inHitstun = false;
-        }
+        UpdateHitstun();
+        
     }
 
     public void ApplyHitstun(float hitstunDuration)
@@ -57,5 +54,49 @@ public class PlayerHealth : MonoBehaviour
         remainingHitstun = hitstunDuration;
 
        
+    }
+
+    public void UpdateHitstun()
+    {
+        if (inHitstun == true && remainingHitstun > 0)
+        {
+            remainingHitstun = remainingHitstun - 1;//lowers hitstun duration
+        }
+        else //if hitstunDuration runs out, no longer in hitstun
+        {
+            inHitstun = false;
+            
+            if (playerAttack.isAttacking == false) //if not attacking and not in hitstun, movement and input preventions will be set to false
+            {
+                if (playerAttack.stopHorizontalInput == true)
+                {
+                    Debug.Log("setting horz input ok");
+                    playerAttack.UpdateHorizontalInputPrevention(false);
+                }
+
+                if (playerAttack.stopHorizontalVel == true)
+                {
+                    playerAttack.UpdateHorizontalVelocityPrevention(false);
+                }
+
+                if (playerAttack.stopDashing == true)
+                {
+                    playerAttack.UpdateDashingPrevention(false);
+                }
+
+                if (playerAttack.stopJumpInput == true)
+                {
+                    playerAttack.UpdateJumpInputPrevention(false);
+                }
+            }
+        }
+
+        if(inHitstun == true && playerMovement.IsGrounded())
+        {
+            playerAttack.UpdateHorizontalVelocityPrevention(true);
+            playerAttack.UpdateHorizontalInputPrevention(true);
+            playerAttack.UpdateDashingPrevention(true);
+            playerAttack.UpdateJumpInputPrevention(true);
+        }
     }
 }

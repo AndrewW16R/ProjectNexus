@@ -19,6 +19,7 @@ public class PlayerAttack : MonoBehaviour
 
     PlayerMovementV2 playerMovement;
     PlayerAnimation playerAnimation;
+    PlayerHealth playerHealth;
     public Vector3 currentHitboxScale;
 
     // Start is called before the first frame update
@@ -27,6 +28,7 @@ public class PlayerAttack : MonoBehaviour
         //Gets playerMovementV2 script
         playerMovement = gameObject.GetComponent<PlayerMovementV2>();
         playerAnimation = gameObject.GetComponent<PlayerAnimation>();
+        playerHealth = gameObject.GetComponent<PlayerHealth>();
         attackDurationUpdateQued = false;
         isAttacking = false;
         stopHorizontalVel = false;
@@ -49,7 +51,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void UpdateAttack()
     {
-        if (Input.GetButtonDown("Fire1") && playerMovement.isDashing == false && playerMovement.IsGrounded() && isAttacking == false) //This is currently exclusive coded for L_Grounded_Neutral for testing purposes
+        if (Input.GetButtonDown("Fire1") && playerMovement.isDashing == false && playerMovement.IsGrounded() && isAttacking == false && playerHealth.inHitstun == false) //This is currently exclusive coded for L_Grounded_Neutral for testing purposes
         {
             isAttacking = true;
 
