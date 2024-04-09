@@ -43,9 +43,21 @@ public class PlayerAnimation : MonoBehaviour
                 sprite.flipX = true;
             }
         } //Player is blocking
-        else if(playerMovement.IsGrounded() && playerHealth.inHitstun == true)
+        else if(playerMovement.IsGrounded() && playerHealth.inHitstun == true && playerHealth.inKnockdown == false)
         {
             SetAnimationState("Nexus_HitStandard");
+            if (playerMovement.facingDirection == 1)
+            {
+                sprite.flipX = false;
+            }
+            else
+            {
+                sprite.flipX = true;
+            }
+        }
+        else if (playerMovement.IsGrounded() && playerHealth.inHitstun == true && playerHealth.inKnockdown == true)
+        {
+            SetAnimationState("Nexus_Knockdown");
             if (playerMovement.facingDirection == 1)
             {
                 sprite.flipX = false;

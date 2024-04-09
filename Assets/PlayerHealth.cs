@@ -9,6 +9,8 @@ public class PlayerHealth : MonoBehaviour
     public bool inHitstun;
     public float remainingHitstun;
 
+    public bool inKnockdown;
+
     PlayerMovementV2 playerMovement;
     PlayerAnimation playerAnimation;
     [HideInInspector] public PlayerAttack playerAttack;
@@ -29,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
             currentHealth = maxHealth;
         }
         inHitstun = false;
+        inKnockdown = false;
     }
 
     // Update is called once per frame
@@ -44,6 +47,12 @@ public class PlayerHealth : MonoBehaviour
             ApplyHitstun(60);
         }
 
+        if (Input.GetButtonDown("Fire3") && playerMovement.isBlocking == false) //when top face button is pressed, simulates getting hit by attack
+        {
+            ApplyHitstun(90);
+            applyKnockdown();
+        }
+
         UpdateHitstun();
         
     }
@@ -52,8 +61,11 @@ public class PlayerHealth : MonoBehaviour
     {
         inHitstun = true; //Is set to be in hitstun
         remainingHitstun = hitstunDuration;
+    }
 
-       
+    public void applyKnockdown()
+    {
+        inKnockdown = true;
     }
 
     public void UpdateHitstun()
@@ -65,6 +77,11 @@ public class PlayerHealth : MonoBehaviour
         else //if hitstunDuration runs out, no longer in hitstun
         {
             inHitstun = false;
+            
+            if(inKnockdown == true)
+            {
+                inKnockdown = false;
+            }
             
             if (playerAttack.isAttacking == false) //if not attacking and not in hitstun, movement and input preventions will be set to false
             {
