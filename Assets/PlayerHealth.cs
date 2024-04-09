@@ -7,7 +7,8 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth;
     public float maxHealth;
     public bool inHitstun;
-    public float remainingHitstun;
+    public float remainingHitstunTime;
+    public float remainingKnockdownTime;
 
     public bool inKnockdown;
 
@@ -44,44 +45,42 @@ public class PlayerHealth : MonoBehaviour
     { 
         if(Input.GetButtonDown("Fire2") && playerMovement.isBlocking == false) //when top face button is pressed, simulates getting hit by attack
         {
-            ApplyHitstun(60);
+            ApplyHitstun(20);
         }
 
-        if (Input.GetButtonDown("Fire3") && playerMovement.isBlocking == false) //when top face button is pressed, simulates getting hit by attack
+        if (Input.GetButtonDown("Fire3") && playerMovement.isBlocking == false && playerMovement.IsGrounded()) //when right face button is pressed, simulates getting hit by attack which causes knockdown
         {
-            ApplyHitstun(90);
-            applyKnockdown();
+            ApplyHitstun(60);
+            applyKnockdown(60);
         }
 
         UpdateHitstun();
-        
+        UpdateKnockdown();
+
     }
 
     public void ApplyHitstun(float hitstunDuration)
     {
         inHitstun = true; //Is set to be in hitstun
-        remainingHitstun = hitstunDuration;
+        remainingHitstunTime = hitstunDuration;
     }
 
-    public void applyKnockdown()
+    public void applyKnockdown(float knockdownDuration)
     {
+        remainingKnockdownTime = knockdownDuration;
         inKnockdown = true;
     }
 
     public void UpdateHitstun()
     {
-        if (inHitstun == true && remainingHitstun > 0)
+        if (inHitstun == true && remainingHitstunTime > 0)
         {
-            remainingHitstun = remainingHitstun - 1;//lowers hitstun duration
+            remainingHitstunTime = remainingHitstunTime - 1;//lowers hitstun duration
         }
         else //if hitstunDuration runs out, no longer in hitstun
         {
             inHitstun = false;
-            
-            if(inKnockdown == true)
-            {
-                inKnockdown = false;
-            }
+   
             
             if (playerAttack.isAttacking == false) //if not attacking and not in hitstun, movement and input preventions will be set to false
             {
@@ -114,6 +113,26 @@ public class PlayerHealth : MonoBehaviour
             playerAttack.UpdateHorizontalInputPrevention(true);
             playerAttack.UpdateDashingPrevention(true);
             playerAttack.UpdateJumpInputPrevention(true);
+        }
+    }
+
+    public void UpdateKnockdown()
+    {
+        if(inKnockdown == true && remainingKnockdownTime > 0 && playerMovement.IsGrounded()) //Knockdown duration will not count down unless player is grounded
+        {
+            remainingKnockdownTime = remainingKnockdownTime - 1;
+            playerAttack.UpdateHorizontalVelocityPrevention(true);
+            playerAttack.UpdateHorizontalInputPrevention(true);
+            playerAttack.UpdateDashingPrevention(true);
+            playerAttack.UpdateJumpInputPrevention(true);
+        }
+        else if (inKnockdown == true && playerMovement.IsGrounded())
+        {
+            inKnockdown = false;
+            playerAttack.UpdateHorizontalVelocityPrevention(false);
+            playerAttack.UpdateHorizontalInputPrevention(false);
+            playerAttack.UpdateDashingPrevention(false);
+            playerAttack.UpdateJumpInputPrevention(false);
         }
     }
 }

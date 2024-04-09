@@ -55,7 +55,7 @@ public class PlayerAnimation : MonoBehaviour
                 sprite.flipX = true;
             }
         }
-        else if (playerMovement.IsGrounded() && playerHealth.inHitstun == true && playerHealth.inKnockdown == true)
+        else if (playerMovement.IsGrounded() && playerHealth.inKnockdown == true)
         {
             SetAnimationState("Nexus_Knockdown");
             if (playerMovement.facingDirection == 1)
