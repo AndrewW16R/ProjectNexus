@@ -129,7 +129,6 @@ public class PlayerAttack : MonoBehaviour
             hitboxGroup.transform.localScale = new Vector3(-1, 1, 1);
             prevAttackDir = -1;
         }
-        Debug.Log(prevAttackDir);
         
     }
 

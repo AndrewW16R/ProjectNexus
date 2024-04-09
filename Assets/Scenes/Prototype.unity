@@ -4784,6 +4784,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAttacking: 0
   attackDurationUpdateQued: 0
+  stopHorizontalVel: 0
+  stopHorizontalInput: 0
+  stopDashing: 0
+  stopJumpInput: 0
   currentAttackDuration: 0
   hitboxGroup: {fileID: 189702987}
   attackHitbox_LGN: {fileID: 1185043692}
@@ -4801,6 +4805,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dcc02d9ba0c27147a831f777747d00b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1646419892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292296553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23847ede84fcb3147a008d2206d13d9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 0
+  inHitstun: 0
+  remainingHitstun: 0
 --- !u!1 &1677891440
 GameObject:
   m_ObjectHideFlags: 0

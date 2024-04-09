@@ -8,6 +8,7 @@ public class PlayerAnimation : MonoBehaviour
     private Animator anim;
     private PlayerMovementV2 playerMovement;
     private PlayerAttack playerAttack;
+    private PlayerHealth playerHealth;
     private string currentAnim;
 
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class PlayerAnimation : MonoBehaviour
         anim = GetComponent<Animator>();
         playerMovement = gameObject.GetComponent<PlayerMovementV2>();
         playerAttack = gameObject.GetComponent<PlayerAttack>();
+        playerHealth = gameObject.GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -41,6 +43,18 @@ public class PlayerAnimation : MonoBehaviour
                 sprite.flipX = true;
             }
         } //Player is blocking
+        else if(playerMovement.IsGrounded() && playerHealth.inHitstun == true)
+        {
+            SetAnimationState("Nexus_HitStandard");
+            if (playerMovement.facingDirection == 1)
+            {
+                sprite.flipX = false;
+            }
+            else
+            {
+                sprite.flipX = true;
+            }
+        }
         else if (playerMovement.dirX == 0 && playerMovement.isDashing == false && playerMovement.IsGrounded() && playerAttack.isAttacking == true && playerMovement.isBlocking == false) //Anim Attack L Grounded Neutral
         {
             SetAnimationState("Nexus_Attack_L_Grounded_Neutral");
