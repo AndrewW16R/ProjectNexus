@@ -31,6 +31,8 @@ public class PlayerMovementV2 : MonoBehaviour
 
     public bool isBlocking;
 
+    public float hitKnockbackDuration;
+
     //left/right input
     [HideInInspector]public float dirX = 0;
 
@@ -273,6 +275,18 @@ public class PlayerMovementV2 : MonoBehaviour
         {
             isBlocking = false;
             playerAttack.UpdateHorizontalVelocityPrevention(false);
+        }
+    }
+
+    public void ApplyKnockbackForce(float horizontalKnockback)
+    {
+        if(facingDirection == 1) //This should be altered later so that the direction of the knockback is determined by the relative position of the source which caused the knockback
+        {
+            rb.AddForce(transform.right *(-1 * horizontalKnockback));
+        }
+        else if (facingDirection == -1)
+        {
+            rb.AddForce(transform.right * horizontalKnockback);
         }
     }
 

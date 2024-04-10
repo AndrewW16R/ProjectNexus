@@ -45,13 +45,13 @@ public class PlayerHealth : MonoBehaviour
     { 
         if(Input.GetButtonDown("Fire2") && playerMovement.isBlocking == false) //when top face button is pressed, simulates getting hit by attack
         {
-            ApplyHitstun(20);
+            ApplyHitstun(20); //Value to change depending on what attack player is hit by
         }
 
         if (Input.GetButtonDown("Fire3") && playerMovement.isBlocking == false && playerMovement.IsGrounded()) //when right face button is pressed, simulates getting hit by attack which causes knockdown
         {
-            ApplyHitstun(60);
-            applyKnockdown(60);
+            ApplyHitstun(60); //technically not needed as long as code for knockdown also applies invincibility to player
+            applyKnockdown(60); //Value to change depending on what attack player is hit by
         }
 
         UpdateHitstun();
@@ -68,6 +68,7 @@ public class PlayerHealth : MonoBehaviour
     public void applyKnockdown(float knockdownDuration)
     {
         remainingKnockdownTime = knockdownDuration;
+        playerMovement.ApplyKnockbackForce(100);
         inKnockdown = true;
     }
 
