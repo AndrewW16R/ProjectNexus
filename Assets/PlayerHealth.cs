@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public float remainingKnockdownTime;
 
     public bool inKnockdown;
+    public bool inKnockback;
 
     PlayerMovementV2 playerMovement;
     PlayerAnimation playerAnimation;
@@ -46,16 +47,19 @@ public class PlayerHealth : MonoBehaviour
         if(Input.GetButtonDown("Fire2") && playerMovement.isBlocking == false) //when top face button is pressed, simulates getting hit by attack
         {
             ApplyHitstun(20); //Value to change depending on what attack player is hit by
+            ApplyKnockback(5);
         }
 
         if (Input.GetButtonDown("Fire3") && playerMovement.isBlocking == false && playerMovement.IsGrounded()) //when right face button is pressed, simulates getting hit by attack which causes knockdown
         {
             ApplyHitstun(60); //technically not needed as long as code for knockdown also applies invincibility to player
-            applyKnockdown(60); //Value to change depending on what attack player is hit by
+            ApplyKnockdown(60); //Value to change depending on what attack player is hit by, value is duration of knockdown in frames
+            ApplyKnockback(10); //Value to change depending on what attack player is hit by, value is duration of knockback in frames
         }
 
         UpdateHitstun();
         UpdateKnockdown();
+        UpdateKnockback();
 
     }
 
@@ -65,11 +69,18 @@ public class PlayerHealth : MonoBehaviour
         remainingHitstunTime = hitstunDuration;
     }
 
-    public void applyKnockdown(float knockdownDuration)
+    public void ApplyKnockdown(float knockdownDuration)
     {
         remainingKnockdownTime = knockdownDuration;
-        playerMovement.ApplyKnockbackForce(100);
+        
         inKnockdown = true;
+    }
+
+    public void ApplyKnockback(float knockbackDuration)
+    {
+        playerMovement.hitKnockbackDuration = knockbackDuration; //sets knockback duration value in movement script
+        playerMovement.hitKnockbackForce = 100; //The exact value which would be passed in should vary depending what the player is getting hit by
+        inKnockback = true;
     }
 
     public void UpdateHitstun()
@@ -121,7 +132,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(inKnockdown == true && remainingKnockdownTime > 0 && playerMovement.IsGrounded()) //Knockdown duration will not count down unless player is grounded
         {
-            remainingKnockdownTime = remainingKnockdownTime - 1;
+            remainingKnockdownTime = remainingKnockdownTime - 1; //knockdown duration counts down
             playerAttack.UpdateHorizontalVelocityPrevention(true);
             playerAttack.UpdateHorizontalInputPrevention(true);
             playerAttack.UpdateDashingPrevention(true);
@@ -134,6 +145,19 @@ public class PlayerHealth : MonoBehaviour
             playerAttack.UpdateHorizontalInputPrevention(false);
             playerAttack.UpdateDashingPrevention(false);
             playerAttack.UpdateJumpInputPrevention(false);
+        }
+    }
+
+    public void UpdateKnockback()
+    {
+        if(inKnockback == true && playerMovement.hitKnockbackDuration > 0)
+        {
+            playerMovement.ApplyKnockbackForce(playerMovement.hitKnockbackForce);
+            playerMovement.hitKnockbackDuration = playerMovement.hitKnockbackDuration - 1;
+        }
+        else
+        {
+            inKnockback = false;
         }
     }
 }

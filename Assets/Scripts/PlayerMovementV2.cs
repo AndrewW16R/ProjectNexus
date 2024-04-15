@@ -31,7 +31,8 @@ public class PlayerMovementV2 : MonoBehaviour
 
     public bool isBlocking;
 
-    public float hitKnockbackDuration;
+    public float hitKnockbackDuration; //How long knockback from getting hit lasts, varies depending what player is hit by
+    public float hitKnockbackForce; //How much knockback is applied from getting hit, varies depending what player is hit by
 
     //left/right input
     [HideInInspector]public float dirX = 0;
