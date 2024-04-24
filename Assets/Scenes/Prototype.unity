@@ -406,7 +406,7 @@ MonoBehaviour:
   radius: 0.5
   height: 2
   canMove: 1
-  maxSpeed: 20
+  maxSpeed: 12
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -420,13 +420,13 @@ MonoBehaviour:
     mode: 2
     interval: 0.5
     sensitivity: 10
-    maximumInterval: 2
+    maximumInterval: 0.5
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
   slowdownDistance: 0.5
-  pickNextWaypointDist: 1.2
+  pickNextWaypointDist: 1.5
   endReachedDistance: 2
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 1
@@ -445,7 +445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  drawGizmos: 0
+  drawGizmos: 1
   detailedGizmos: 0
   startEndModifier:
     addPoints: 0
@@ -487,8 +487,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1646419879}
-  speed: 20
+  speed: 1
   nextWaypointDistance: 3
+  enemySprite: {fileID: 3744226361036673632}
+  enemySight: {fileID: 0}
+--- !u!114 &366130710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366130696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb4b5b3b6782b64fb485801a369454a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInSight: 0
+  player: {fileID: 0}
 --- !u!1 &491157172
 GameObject:
   m_ObjectHideFlags: 0
@@ -5303,12 +5319,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3744226361582590456, guid: d4dc3a5c3b1a78d4c94793c11de43e51, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744226361582590456, guid: d4dc3a5c3b1a78d4c94793c11de43e51, type: 3}
       propertyPath: m_Constraints
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3744226361582590456, guid: d4dc3a5c3b1a78d4c94793c11de43e51, type: 3}
       propertyPath: m_GravityScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744226361582590457, guid: d4dc3a5c3b1a78d4c94793c11de43e51, type: 3}
+      propertyPath: m_Radius
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3744226361582590458, guid: d4dc3a5c3b1a78d4c94793c11de43e51, type: 3}
       propertyPath: m_RootOrder
@@ -5360,3 +5384,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4dc3a5c3b1a78d4c94793c11de43e51, type: 3}
+--- !u!4 &3744226361036673632 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3744226361076708350, guid: d4dc3a5c3b1a78d4c94793c11de43e51, type: 3}
+  m_PrefabInstance: {fileID: 3744226361036673631}
+  m_PrefabAsset: {fileID: 0}

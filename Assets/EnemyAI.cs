@@ -18,11 +18,15 @@ public class EnemyAI : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rb;
 
+    public Transform enemySprite;
+    public EnemySight enemySight;
+
     // Start is called before the first frame update
     void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        enemySight = GetComponent<EnemySight>();
 
         InvokeRepeating("UpdatePath", 0f, .5f); //Specified methed to invoke, amount of time to wait before calling method, repeat rate (currently set to every half-second
        
@@ -30,7 +34,7 @@ public class EnemyAI : MonoBehaviour
 
     void UpdatePath()
     {
-        if (seeker.IsDone()) //if a path is not currently being calculated
+        if (seeker.IsDone() && enemySight.playerInSight == true) //if a path is not currently being calculated
         {
             seeker.StartPath(rb.position, target.position, OnPathComplete); //Starts calculating path
         }
@@ -66,8 +70,8 @@ public class EnemyAI : MonoBehaviour
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized; //Draws direction from position to the next waypoint
         Vector2 force = direction * speed * Time.deltaTime;
-       // rb.AddForce(force);
-       rb.velocity = force;
+        rb.AddForce(force);
+      // rb.velocity = force;
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]); //sets distance float to distance from enemy to their next waypoint
 
@@ -76,5 +80,13 @@ public class EnemyAI : MonoBehaviour
             currentWaypoint++;//Waypoint has been reached, time to move to next waypoint
         }
 
+        if (rb.velocity.x >= 0.01f) //Flips enemy sprite based on movement as needed
+        {
+            enemySprite.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else if (rb.velocity.x <= -0.01f)
+        {
+            enemySprite.localScale = new Vector3(1f, 1f, 1f);
+        }
     }
 }
