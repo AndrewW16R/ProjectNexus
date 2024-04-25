@@ -8,10 +8,18 @@ public class EnemySprite : MonoBehaviour
 
     public AIPath aiPath; //component added to enemey gameobject to control it
 
+    Animator animator;
+    EnemySight enemySight;
+    EnemyAI enemyAI;
+
+    private string currentAnim;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        animator = GetComponent<Animator>();
+        enemySight = GetComponentInParent<EnemySight>();
+        enemyAI = GetComponentInParent<EnemyAI>();
     }
 
     // Update is called once per frame
@@ -25,5 +33,33 @@ public class EnemySprite : MonoBehaviour
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
+
+        AnimationUpdate();
+    }
+
+    void AnimationUpdate()
+    {
+        if (enemySight.playerInSight == true && enemyAI.isMoving == true)
+        {
+            SetAnimationState("Enemy_Dummy_Walk");
+        }
+        else
+        {
+            SetAnimationState("Enemy_Dummy_Idle");
+        }
+    }
+
+    void SetAnimationState(string newState)
+    {
+        if (newState == currentAnim)
+        {
+            return;
+        }
+        else
+        {
+            currentAnim = newState;
+            animator.Play(newState);
+        }
+
     }
 }

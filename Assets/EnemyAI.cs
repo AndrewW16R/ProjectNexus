@@ -21,6 +21,8 @@ public class EnemyAI : MonoBehaviour
     public Transform enemySprite;
     public EnemySight enemySight;
 
+    public bool isMoving;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,6 +82,16 @@ public class EnemyAI : MonoBehaviour
             currentWaypoint++;//Waypoint has been reached, time to move to next waypoint
         }
 
+
+        if (force.x >= 0.001f || force.x <= -0.001f)
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
+        /*
         if (rb.velocity.x >= 0.01f) //Flips enemy sprite based on movement as needed
         {
             enemySprite.localScale = new Vector3(-1f, 1f, 1f);
@@ -88,5 +100,6 @@ public class EnemyAI : MonoBehaviour
         {
             enemySprite.localScale = new Vector3(1f, 1f, 1f);
         }
+        */
     }
 }
