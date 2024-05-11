@@ -397,7 +397,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366130696}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
@@ -487,10 +487,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1646419879}
-  speed: 1
+  speed: 200
   nextWaypointDistance: 3
+  minDistanceFromTarget: 1
+  currentDistanceFromTarget: 0
+  atMinDistanceFromTarget: 0
   enemySprite: {fileID: 3744226361036673632}
   enemySight: {fileID: 0}
+  isMoving: 0
 --- !u!114 &366130710
 MonoBehaviour:
   m_ObjectHideFlags: 0

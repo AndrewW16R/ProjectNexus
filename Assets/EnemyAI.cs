@@ -11,6 +11,10 @@ public class EnemyAI : MonoBehaviour
     public float speed = 100f;
     public float nextWaypointDistance = 3f; //How close the enemy needs to be to the waypoint before moving on to the next one
 
+    public float minDistanceFromTarget = 1; //The closest the AI can be to the target
+    public float currentDistanceFromTarget;
+    public bool atMinDistanceFromTarget; //Is the AI currently at the minimum distance it can be from the target?
+
     Path path; //The current path which the enemy is following
     int currentWaypoint = 0; //The current waypoint along the path which is being targetted
     bool reachedEndOfPath = false; //Whether or not the end of the path has been reached
@@ -36,7 +40,10 @@ public class EnemyAI : MonoBehaviour
 
     void UpdatePath()
     {
-        if (seeker.IsDone() && enemySight.playerInSight == true) //if a path is not currently being calculated
+
+        UpdateDistanceFromTarget();
+
+        if (seeker.IsDone() && enemySight.playerInSight == true && atMinDistanceFromTarget == false) //if a path is not currently being calculated, the player is in sight, and the AI is not currently as close as they can be to the target
         {
             seeker.StartPath(rb.position, target.position, OnPathComplete); //Starts calculating path
         }
@@ -73,7 +80,7 @@ public class EnemyAI : MonoBehaviour
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized; //Draws direction from position to the next waypoint
         Vector2 force = direction * speed * Time.deltaTime;
         rb.AddForce(force);
-      // rb.velocity = force;
+       rb.velocity = force;
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]); //sets distance float to distance from enemy to their next waypoint
 
@@ -91,7 +98,7 @@ public class EnemyAI : MonoBehaviour
         {
             isMoving = false;
         }
-        /*
+        
         if (rb.velocity.x >= 0.01f) //Flips enemy sprite based on movement as needed
         {
             enemySprite.localScale = new Vector3(-1f, 1f, 1f);
@@ -100,6 +107,21 @@ public class EnemyAI : MonoBehaviour
         {
             enemySprite.localScale = new Vector3(1f, 1f, 1f);
         }
-        */
+
+
+    }
+
+    void UpdateDistanceFromTarget()
+    {
+        currentDistanceFromTarget = Vector2.Distance(target.transform.position, gameObject.transform.position);
+
+        if(currentDistanceFromTarget <= minDistanceFromTarget)
+        {
+            atMinDistanceFromTarget = true;
+        }
+        else
+        {
+            atMinDistanceFromTarget = false;
+        }
     }
 }
