@@ -42,19 +42,39 @@ public class PlayerHealth : MonoBehaviour
         HitAnimTest();
     }
 
+
+    public void TakeDamage(float damageRecieved)
+    {
+        currentHealth = currentHealth - damageRecieved;
+
+        //Check if health is at or below zero here
+    }
+
+    public void HealPlayer(float healAmount)
+    {
+        if (healAmount > (maxHealth - currentHealth)) //If adding the heal amount to the player's current healt would cause overheal, the player's health will be set to their maximum possible health
+        {
+            currentHealth = maxHealth;
+        }
+        else
+        {
+            currentHealth = currentHealth + healAmount;
+        }
+    }
+
     public void HitAnimTest()
     { 
         if(Input.GetButtonDown("Fire2") && playerMovement.isBlocking == false) //when top face button is pressed, simulates getting hit by attack
         {
             ApplyHitstun(20); //Value to change depending on what attack player is hit by
-            ApplyKnockback(5);
+            ApplyKnockback(100, 5);
         }
 
         if (Input.GetButtonDown("Fire3") && playerMovement.isBlocking == false && playerMovement.IsGrounded()) //when right face button is pressed, simulates getting hit by attack which causes knockdown
         {
             ApplyHitstun(60); //technically not needed as long as code for knockdown also applies invincibility to player
             ApplyKnockdown(60); //Value to change depending on what attack player is hit by, value is duration of knockdown in frames
-            ApplyKnockback(10); //Value to change depending on what attack player is hit by, value is duration of knockback in frames
+            ApplyKnockback(100, 10); //Value to change depending on what attack player is hit by, value is duration of knockback in frames
         }
 
         UpdateHitstun();
@@ -76,10 +96,10 @@ public class PlayerHealth : MonoBehaviour
         inKnockdown = true;
     }
 
-    public void ApplyKnockback(float knockbackDuration)
+    public void ApplyKnockback(float knockbackPower, float knockbackDuration)
     {
         playerMovement.hitKnockbackDuration = knockbackDuration; //sets knockback duration value in movement script
-        playerMovement.hitKnockbackForce = 100; //The exact value which would be passed in should vary depending what the player is getting hit by
+        playerMovement.hitKnockbackForce = knockbackPower; //The exact value which would be passed in should vary depending what the player is getting hit by
         inKnockback = true;
     }
 
@@ -138,7 +158,7 @@ public class PlayerHealth : MonoBehaviour
             playerAttack.UpdateDashingPrevention(true);
             playerAttack.UpdateJumpInputPrevention(true);
         }
-        else if (inKnockdown == true && playerMovement.IsGrounded())
+        else if (inKnockdown == true && playerMovement.IsGrounded()) //No longer in knowdown on remainingKnockdowntime runs out.
         {
             inKnockdown = false;
             playerAttack.UpdateHorizontalVelocityPrevention(false);

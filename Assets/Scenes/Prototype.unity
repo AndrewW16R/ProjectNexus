@@ -519,11 +519,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 366130696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b9dd01b20bc77242bf079171a2bf0d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 7557aa3c0ec8f9d4db104aa2a32b78cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMaxHealth: 10
-  enemyCurrentHealth: 0
 --- !u!1 &400671010 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3744226360958694988, guid: d4dc3a5c3b1a78d4c94793c11de43e51, type: 3}
@@ -541,7 +539,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e9fcb4c3ac645468ca938d6760630a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 1
+  attackDamage: 0
+  attackHitstunDuration: 0
+  attackKnockbackPower: 0
+  attackKnockbackDuration: 0
+  appliesKnockdown: 0
+  attackKnockdownDuration: 0
 --- !u!1 &491157172
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,7 +902,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e9fcb4c3ac645468ca938d6760630a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 0
+  attackDamage: 0
+  attackHitstunDuration: 0
+  attackKnockbackPower: 0
+  attackKnockbackDuration: 0
+  appliesKnockdown: 0
+  attackKnockdownDuration: 0
 --- !u!1 &869749564
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,7 +1023,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e9fcb4c3ac645468ca938d6760630a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 0
+  attackDamage: 0
+  attackHitstunDuration: 0
+  attackKnockbackPower: 0
+  attackKnockbackDuration: 0
+  appliesKnockdown: 0
+  attackKnockdownDuration: 0
 --- !u!1 &993601772 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3744226361076708351, guid: d4dc3a5c3b1a78d4c94793c11de43e51, type: 3}
@@ -1158,7 +1171,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e9fcb4c3ac645468ca938d6760630a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 1
+  attackDamage: 0
+  attackHitstunDuration: 0
+  attackKnockbackPower: 0
+  attackKnockbackDuration: 0
+  appliesKnockdown: 0
+  attackKnockdownDuration: 0
 --- !u!1 &1356668115
 GameObject:
   m_ObjectHideFlags: 0

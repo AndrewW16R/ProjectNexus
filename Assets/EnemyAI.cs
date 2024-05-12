@@ -27,12 +27,16 @@ public class EnemyAI : MonoBehaviour
 
     public bool isMoving;
 
+    public bool preventMovement;
+
     // Start is called before the first frame update
     void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         enemySight = GetComponent<EnemySight>();
+
+        preventMovement = false;
 
         InvokeRepeating("UpdatePath", 0f, .5f); //Specified methed to invoke, amount of time to wait before calling method, repeat rate (currently set to every half-second
        
@@ -43,7 +47,7 @@ public class EnemyAI : MonoBehaviour
 
         UpdateDistanceFromTarget();
 
-        if (seeker.IsDone() && enemySight.playerInSight == true && atMinDistanceFromTarget == false) //if a path is not currently being calculated, the player is in sight, and the AI is not currently as close as they can be to the target
+        if (seeker.IsDone() && enemySight.playerInSight == true && atMinDistanceFromTarget == false && preventMovement == false) //if a path is not currently being calculated, the player is in sight, the AI is not currently as close as they can be to the target, an movement is not intentionally be prevented
         {
             seeker.StartPath(rb.position, target.position, OnPathComplete); //Starts calculating path
         }
