@@ -481,7 +481,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366130696}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 314fdbdb1a4ca6749b9e14fdf075b7b3, type: 3}
   m_Name: 
@@ -492,6 +492,7 @@ MonoBehaviour:
   minDistanceFromTarget: 1
   currentDistanceFromTarget: 0
   atMinDistanceFromTarget: 0
+  reachedEndOfPath: 0
   enemySprite: {fileID: 3744226361036673632}
   enemySight: {fileID: 0}
   isMoving: 0
@@ -509,6 +510,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInSight: 0
   player: {fileID: 0}
+--- !u!114 &366130715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366130696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b9dd01b20bc77242bf079171a2bf0d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMaxHealth: 10
+  enemyCurrentHealth: 0
+--- !u!1 &400671010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3744226360958694988, guid: d4dc3a5c3b1a78d4c94793c11de43e51, type: 3}
+  m_PrefabInstance: {fileID: 3744226361036673631}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &400671014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400671010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e9fcb4c3ac645468ca938d6760630a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackDamage: 1
 --- !u!1 &491157172
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,7 +715,39 @@ MonoBehaviour:
     _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
     _AreaColors:
     - {r: 0, g: 0, b: 0, a: 0}
-  tagNames: []
+  tagNames:
+  - Basic Ground
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
@@ -721,13 +786,14 @@ GameObject:
   - component: {fileID: 833569426}
   - component: {fileID: 833569428}
   - component: {fileID: 833569427}
+  - component: {fileID: 833569429}
   m_Layer: 7
   m_Name: Hurtbox_Nexus
-  m_TagString: Untagged
+  m_TagString: PlayerHurtBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &833569426
 Transform:
   m_ObjectHideFlags: 0
@@ -821,6 +887,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &833569429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833569425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e9fcb4c3ac645468ca938d6760630a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackDamage: 0
 --- !u!1 &869749564
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,6 +998,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1646419879}
+--- !u!1 &924982837 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3744226361556961807, guid: d4dc3a5c3b1a78d4c94793c11de43e51, type: 3}
+  m_PrefabInstance: {fileID: 3744226361036673631}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &924982841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924982837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e9fcb4c3ac645468ca938d6760630a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackDamage: 0
 --- !u!1 &993601772 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3744226361076708351, guid: d4dc3a5c3b1a78d4c94793c11de43e51, type: 3}
@@ -948,9 +1045,10 @@ GameObject:
   - component: {fileID: 1185043693}
   - component: {fileID: 1185043694}
   - component: {fileID: 1185043695}
+  - component: {fileID: 1185043696}
   m_Layer: 7
   m_Name: Hitbox_Attack_L_Grounded_Neutral
-  m_TagString: Untagged
+  m_TagString: PlayerHitBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1048,6 +1146,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1185043696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185043692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e9fcb4c3ac645468ca938d6760630a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackDamage: 1
 --- !u!1 &1356668115
 GameObject:
   m_ObjectHideFlags: 0
@@ -5318,9 +5429,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3744226360958694988, guid: d4dc3a5c3b1a78d4c94793c11de43e51, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744226360958694988, guid: d4dc3a5c3b1a78d4c94793c11de43e51, type: 3}
+      propertyPath: m_TagString
+      value: EnemyHitBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744226361556961807, guid: d4dc3a5c3b1a78d4c94793c11de43e51, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744226361556961807, guid: d4dc3a5c3b1a78d4c94793c11de43e51, type: 3}
+      propertyPath: m_TagString
+      value: EnemyHurtBox
+      objectReference: {fileID: 0}
     - target: {fileID: 3744226361582590456, guid: d4dc3a5c3b1a78d4c94793c11de43e51, type: 3}
       propertyPath: m_Mass
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744226361582590456, guid: d4dc3a5c3b1a78d4c94793c11de43e51, type: 3}
+      propertyPath: m_BodyType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3744226361582590456, guid: d4dc3a5c3b1a78d4c94793c11de43e51, type: 3}
       propertyPath: m_LinearDrag

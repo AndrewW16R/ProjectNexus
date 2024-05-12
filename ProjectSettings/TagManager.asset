@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - PlayerHitBox
+  - EnemyHitBox
+  - PlayerHurtBox
+  - EnemyHurtBox
   layers:
   - Default
   - TransparentFX

@@ -17,7 +17,7 @@ public class EnemyAI : MonoBehaviour
 
     Path path; //The current path which the enemy is following
     int currentWaypoint = 0; //The current waypoint along the path which is being targetted
-    bool reachedEndOfPath = false; //Whether or not the end of the path has been reached
+    public bool reachedEndOfPath = false; //Whether or not the end of the path has been reached
 
     Seeker seeker;
     Rigidbody2D rb;
@@ -79,7 +79,7 @@ public class EnemyAI : MonoBehaviour
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized; //Draws direction from position to the next waypoint
         Vector2 force = direction * speed * Time.deltaTime;
-        rb.AddForce(force);
+        //rb.AddForce(force);
        rb.velocity = force;
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]); //sets distance float to distance from enemy to their next waypoint
@@ -111,6 +111,7 @@ public class EnemyAI : MonoBehaviour
 
     }
 
+ 
     void UpdateDistanceFromTarget()
     {
         currentDistanceFromTarget = Vector2.Distance(target.transform.position, gameObject.transform.position);
@@ -124,4 +125,5 @@ public class EnemyAI : MonoBehaviour
             atMinDistanceFromTarget = false;
         }
     }
+
 }
